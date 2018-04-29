@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Lobstex
+Comment=Lobstex P2P Cryptocurrency
+Comment[fr]=Lobstex, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Lobstex, eşten eşe kriptografik sanal para birimi
+Exec=lobstex-qt %u
+Terminal=false
+Type=Application
+Icon=lobstex128
+MimeType=x-scheme-handler/lobstex;
+Categories=Office;Finance;

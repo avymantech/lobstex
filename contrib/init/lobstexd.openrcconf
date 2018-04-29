@@ -1,0 +1,26 @@
+# /etc/conf.d/lobstexd: config file for /etc/init.d/lobstexd
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/lobstex/lobstex.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/lobstexd"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/lobstexd.pid"
+
+# Where to write lobstexd data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/lobstexd"
+
+# User and group to own lobstexd process
+#BITCOIND_USER="lobstex"
+#BITCOIND_GROUP="lobstex"
+
+# Path to lobstexd executable
+#BITCOIND_BIN="/usr/bin/lobstexd"
+
+# Nice value to run lobstexd under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""

@@ -1,0 +1,11 @@
+[Protocol]
+exec=lobstex-qt '%u'
+protocol=lobstex
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false
