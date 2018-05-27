@@ -2,7 +2,7 @@
 # Lobstex Masternode Setup Guide  For MAC (Ubuntu 16.04)
 This guide will assist you in setting up a Lobstex Masternode on a Linux Server running Ubuntu 16.04. (Use at your own risk)
 
-If you require further assistance contact the support team @ [Discord](https://discord.gg/BDbgFhQ)
+If you require further assistance contact the support team @ [Discord](https://discord.gg/kKgDVWF)
 ***
 ## Requirements
 1) **10,000 Lobstex coins.**
@@ -176,7 +176,7 @@ Click "File Save"
 
 `lobstex-cli getinfo`
 
-*You should see ***status (*)***
+*You should see ***status (***)***
 
 If you do, congratulations! You have now setup a masternode. If you do not, please contact support and they will assist you.  
 ***
