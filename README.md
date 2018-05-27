@@ -1,5 +1,5 @@
 ![Example-Logo](https://i.imgur.com/iv5Zdek.png)
-# Lobstex Masternode Setup Guide for Windows (Ubuntu 16.04)
+# Lobstex Masternode Setup Guide - Windows (Ubuntu 16.04)
 This guide will assist you in setting up a Lobstex Masternode on a Linux Server running Ubuntu 16.04. (Use at your own risk)
 
 If you require further assistance contact the support team @ [Discord](https://discord.gg/kKgDVWF)
