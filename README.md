@@ -196,7 +196,7 @@ Click "File Save"
 
 `lobstex-cli getinfo`
 
-*You should see ***status 9***
+*You should see ***status (***) ***
 
 If you do, congratulations! You have now setup a masternode. If you do not, please contact support (support@lobstex.com) and they will assist you.  
 ***
