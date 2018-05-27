@@ -64,7 +64,7 @@ If you require further assistance contact the support team @ [Discord](https://d
 ## Section C: Connecting to the VPS & Installing the MN script via Terminal
 
 ***Step 1***
-* Use command ssh root@ VPS IP (you can find this by going to the server tab within Vultr and clicking on your server. 
+* Use command ssh root@VPS IP (you can find this by going to the server tab within Vultr and clicking on your server. 
 ![Example-Vultr](https://i.imgur.com/PZWEq5f.png)
 ***
 
