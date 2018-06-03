@@ -124,15 +124,15 @@ public:
         nMaxMoneyOut = 100000000 * COIN;
 
         /** Height or Time Based Activations **/
-        nLastPOWBlock = 43201;
+        nLastPOWBlock = 43231;
         nModifierUpdateBlock = 0;
-        nZerocoinStartHeight = 43202;
+        nZerocoinStartHeight = 43232;
         nZerocoinStartTime = 1515434000; // October 17, 2017 4:30:00 AM
-        nBlockEnforceSerialRange = 43204; //Enforce serial range starting this block
-        nBlockRecalculateAccumulators = 43205; //Trigger a recalculation of accumulators
-        nBlockFirstFraudulent = 43203; //First block that bad serials emerged
-        nBlockLastGoodCheckpoint = 43205; //Last valid accumulator checkpoint
-        nBlockEnforceInvalidUTXO = 43201; //Start enforcing the invalid UTXO's
+        nBlockEnforceSerialRange = 43234; //Enforce serial range starting this block
+        nBlockRecalculateAccumulators = 43235; //Trigger a recalculation of accumulators
+        nBlockFirstFraudulent = 43233; //First block that bad serials emerged
+        nBlockLastGoodCheckpoint = 43235; //Last valid accumulator checkpoint
+        nBlockEnforceInvalidUTXO = 43231; //Start enforcing the invalid UTXO's
 
         /**
          * Build the genesis block. Note that the output of the genesis coinbase cannot
@@ -252,10 +252,10 @@ public:
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
         genesis.nTime = 1454124731;
-        genesis.nNonce = 2402015;
+        genesis.nNonce = 5709560;
 
         hashGenesisBlock = genesis.GetHash();
-        //assert(hashGenesisBlock == uint256("0x0000041e482b9b9691d98eefb48473405c0b8ec31b76df3797c74a78680ef818"));
+        assert(hashGenesisBlock == uint256("0x0000061884e153850c6fe281fdce02fd24c343540999ab29d942ec3ff62001e7"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -318,11 +318,12 @@ public:
         bnProofOfWorkLimit = ~uint256(0) >> 1;
         genesis.nTime = 1454124731;
         genesis.nBits = 0x207fffff;
-        genesis.nNonce = 12345;
+        genesis.nNonce = 5709561;
 
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 46204;
-        //assert(hashGenesisBlock == uint256("0x4f023a2120d9127b21bbad01724fdb79b519f593f2a85b60d3d79160ec5f29df"));
+		
+        assert(hashGenesisBlock == uint256("0x0a82431131f42aa49628d91e6c98130ce44f35cf83db3e5af490e9b7b94aec67"));
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.
