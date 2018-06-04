@@ -12,7 +12,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 SENTINEL_REPO='N/A'
 COIN_NAME='Lobstex'
 COIN_PORT=14146
-RPC_PORT=14145
+RPC_PORT=15156
 
 NODEIP=$(curl -s4 icanhazip.com)
 
