@@ -77,15 +77,24 @@ https://graviex.net/markets/lobsbtc
 
 
 CONTACT
+
 support@lobstex.com 
+
 vacancy@lobstex.com 
+
 market@lobstex.com
 
 
 SOCIAL
+
 TWITTER https://twitter.com/LOBSTEXofficial 
+
 DISCORD https://discord.gg/pdUX3Uh
+
 TELEGRAM https://t.me/lobstexofficial 
+
 REDDIT https://www.reddit.com/r/Lobstex/
+
 FACEBOOK https://www.facebook.com/lobstex/
+
 MEDIUM https://medium.com/lobstex
