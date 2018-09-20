@@ -8,9 +8,6 @@ Introducing Lobstex (Ticker : LOBS) Official Launch Date : 02 May, 2018
 
 Zerocoin Masternodes SwifTX
 
-~ 0 TO 5000 .   : No Reward,
-~ 5001 TO 43200 : 50% Masternodes : 60% Masternodes
-~ 43201 TO INF  : 100% Miners 50% Miners 40% Stakers
 
 
 COIN SPECS
@@ -23,24 +20,10 @@ RPC Port: 15156
 P2P Port: 14146
 
 
-BLOCKS
-Block Time: 60 sec Structure:
-~ 0 TO 43200 : PoW
-~ 43201 to INF: Pos 
-Total Supply: 78.6 mil 
-Circulating supply: 9.5 mil
-
-
 MASTERNODES
 Collateral: 10000 
 LOBS Mature Time: 4 Hours
 
-REWARD STRUCTURE
-BLOCK REWARDS
-0 TO 500: 5 Per Block (Anti Instamine) 
-501 TO 100000: 40 Per Block
-100001 TO 300000: 30 Per Block
-300001 TO INF: 15 Per Block
 
 PREMINE
 Total Premine Distribution: 1.5 mil (Locked)
