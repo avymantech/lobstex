@@ -4,7 +4,9 @@ Welcome to the world of privacy
 
 Website: www.lobstex.com
 
-Introducing Lobstex (Ticker : LOBS) Official Launch Date : 02 May, 2018
+Introducing Lobstex (Ticker : LOBS) 
+
+Official Launch Date : 02 May, 2018
 
 Zerocoin Masternodes SwifTX
 
@@ -13,48 +15,65 @@ Zerocoin Masternodes SwifTX
 COIN SPECS
 
 Name: Lobstex 
+
 Ticker: LOBS 
+
 Algorithm: Quark 
-Type: PoS and PoW (Initially) 
+
+Type: PoS and PoW (Initially)
+
 RPC Port: 15156
+
 P2P Port: 14146
 
 
 MASTERNODES
+
 Collateral: 10000 
+
 LOBS Mature Time: 4 Hours
 
 
 PREMINE
+
 Total Premine Distribution: 1.5 mil (Locked)
 
 WALLETS
-www.lobstex.com https://github.com/avymantech/lobstex/releases/tag/v2.0
+
+www.lobstex.com 
+
+https://github.com/avymantech/lobstex/releases/tag/v2.0
 
 BLOCK EXPLORER
+
 http://explorer.lobstex.com/
 
 GITHUB
+
 https://github.com/avymantech/lobstex
 
 WHITEPAPER v1.0
+
 http://lobstex.com/wp-content/uploads/2018/08/Lobstex-Whitepaper.pdf
 
 BITCOINTALK ANN
+
 https://bitcointalk.org/index.php?topic=3483089.0
 
-ROADMAP
-Q2, 2018 : New Exhanges , Whitepaper, Zerocoin protocol 
-Q3, 2018 : Merchants, Partnerships, Mobile wallets
-Q4, 2018 : Dealerships, Bigger Exchanges, Wallet voting 
-Q1, 2019 : Colossal Protocol, Marketplace, QR Integration
 
 EXCHANGES
+
 Fatbtc
+
 https://www.fatbtc.com/
-CryptoBridge 
+
+CryptoBridge
+
 https://crypto-bridge.org/ 
-GRAVIEX https://graviex.net/markets/lobsbtc
+
+GRAVIEX 
+
+https://graviex.net/markets/lobsbtc
 
 
 CONTACT
