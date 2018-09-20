@@ -1,6 +1,9 @@
 # lobstex
 
-Welcome to the world of privacy
+Welcome to the world of Privacy
+
+Zerocoin Masternodes SwifTX
+
 
 Website: www.lobstex.com
 
@@ -8,7 +11,6 @@ Introducing Lobstex (Ticker : LOBS)
 
 Official Launch Date : 02 May, 2018
 
-Zerocoin Masternodes SwifTX
 
 
 
