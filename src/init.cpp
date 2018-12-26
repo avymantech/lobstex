@@ -1415,8 +1415,21 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
                 }
 
                 // Populate list of invalid/fraudulent outpoints that are banned from the chain
-                PopulateInvalidOutPointMap();
+                invalid_out::LoadOutpoints();
+                invalid_out::LoadSerials();
 
+                // Drop all information from the zerocoinDB and repopulate
+                if (GetBoolArg("-reindexzerocoin", false)) {
+                    if (chainActive.Height() > Params().Zerocoin_StartHeight()) {
+                        uiInterface.InitMessage(_("Reindexing zerocoin database..."));
+                        std::string strError = ReindexZerocoinDB();
+                        if (strError != "") {
+                            strLoadError = strError;
+                            break;
+                        }
+                    }
+                }
+                
                 // Recalculate money supply for blocks that are impacted by accounting issue after zerocoin activation
                 if (GetBoolArg("-reindexmoneysupply", false)) {
                     if (chainActive.Height() > Params().Zerocoin_StartHeight()) {
