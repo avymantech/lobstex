@@ -1,5 +1,5 @@
 // Copyright (c) 2017 The PIVX developers	
-// Copyright (c) 2017 The Lobstex developers
+// Copyright (c) 2019 The Lobstex developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef Lobstex_ACCUMULATORMAP_H
