@@ -10,7 +10,7 @@
  * @license    This project is released under the MIT license.
  **/
 // Copyright (c) 2017 The PIVX developers	
-// Copyright (c) 2017 The Lobstex developers
+// Copyright (c) 2019 The Lobstex developers
 #ifndef ACCUMULATOR_H_
 #define ACCUMULATOR_H_
 
