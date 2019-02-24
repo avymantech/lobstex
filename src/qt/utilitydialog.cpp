@@ -29,7 +29,7 @@
 #include <QVBoxLayout>
 
 /** "Help message" or "About" dialog box */
-HelpMessageDialog::HelpMessageDialog(QWidget* parent, bool about) : QDialog(parent, Qt::WindowSystemMenuHint | Qt::WindowTitleHint | Qt::WindowCloseButtonHint),
+HelpMessageDialog::HelpMessageDialog(QWidget* parent, bool about) : QDialog(parent),
                                                                     ui(new Ui::HelpMessageDialog)
 {
     ui->setupUi(this);
