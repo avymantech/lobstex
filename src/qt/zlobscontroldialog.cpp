@@ -16,7 +16,7 @@ std::list<std::string> ZLOBSControlDialog::listSelectedMints;
 std::list<CZerocoinMint> ZLOBSControlDialog::listMints;
 
 ZLOBSControlDialog::ZLOBSControlDialog(QWidget *parent) :
-    QDialog(parent, Qt::WindowSystemMenuHint | Qt::WindowTitleHint | Qt::WindowCloseButtonHint),
+    QDialog(parent),
     ui(new Ui::ZLOBSControlDialog),
     model(0)
 {
