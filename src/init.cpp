@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers	
-// Copyright (c) 2018-2019 The Lobstex developers
+// Copyright (c) 2015-2017 The Lobstex developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -1428,7 +1428,6 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
 
                 // Force recalculation of accumulators.
                 if (GetBoolArg("-reindexaccumulators", false)) {
-                   
                     CBlockIndex* pindex = chainActive[Params().Zerocoin_StartHeight()];
                     while (pindex->nHeight < chainActive.Height()) {
                         if (!count(listAccCheckpointsNoDB.begin(), listAccCheckpointsNoDB.end(), pindex->nAccumulatorCheckpoint))
@@ -1874,4 +1873,3 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
 
     return !fRequestShutdown;
 }
-
