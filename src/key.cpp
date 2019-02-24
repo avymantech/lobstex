@@ -48,8 +48,8 @@ void CKey::MakeNewKey(bool fCompressedIn)
 
 bool CKey::SetPrivKey(const CPrivKey& privkey, bool fCompressedIn)
 {
-if (!ec_privkey_import_der(secp256k1_context_sign, (unsigned char*)begin(), &privkey[0], privkey.size()))
-    return false;
+if (!secp256k1_ec_privkey_import((unsigned char*)begin(), &privkey[0], privkey.size()))
+        return false;
     fCompressed = fCompressedIn;
     fValid = true;
     return true;
