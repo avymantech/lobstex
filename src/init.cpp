@@ -1415,21 +1415,8 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
                 }
 
                 // Populate list of invalid/fraudulent outpoints that are banned from the chain
-                invalid_out::LoadOutpoints();
-                invalid_out::LoadSerials();
+                PopulateInvalidOutPointMap();
 
-                // Drop all information from the zerocoinDB and repopulate
-                if (GetBoolArg("-reindexzerocoin", false)) {
-                    if (chainActive.Height() > Params().Zerocoin_StartHeight()) {
-                        uiInterface.InitMessage(_("Reindexing zerocoin database..."));
-                        std::string strError = ReindexZerocoinDB();
-                        if (strError != "") {
-                            strLoadError = strError;
-                            break;
-                        }
-                    }
-                }
-                
                 // Recalculate money supply for blocks that are impacted by accounting issue after zerocoin activation
                 if (GetBoolArg("-reindexmoneysupply", false)) {
                     if (chainActive.Height() > Params().Zerocoin_StartHeight()) {
@@ -1441,14 +1428,12 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
 
                 // Force recalculation of accumulators.
                 if (GetBoolArg("-reindexaccumulators", false)) {
-                   if (chainActive.Height() > Params().Zerocoin_Block_V2_Start()) {
-                        CBlockIndex *pindex = chainActive[Params().Zerocoin_Block_V2_Start()];
-                        while (pindex->nHeight < chainActive.Height()) {
-                            if (!count(listAccCheckpointsNoDB.begin(), listAccCheckpointsNoDB.end(),
-                                       pindex->nAccumulatorCheckpoint))
-                                listAccCheckpointsNoDB.emplace_back(pindex->nAccumulatorCheckpoint);
-                            pindex = chainActive.Next(pindex);
-                        }
+                   
+                    CBlockIndex* pindex = chainActive[Params().Zerocoin_StartHeight()];
+                    while (pindex->nHeight < chainActive.Height()) {
+                        if (!count(listAccCheckpointsNoDB.begin(), listAccCheckpointsNoDB.end(), pindex->nAccumulatorCheckpoint))
+                            listAccCheckpointsNoDB.emplace_back(pindex->nAccumulatorCheckpoint);
+                        pindex = chainActive.Next(pindex);
                     }
                 }
 
