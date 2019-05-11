@@ -1,5 +1,6 @@
-// Copyright (c) 2011-2013 The Bitcoin developers
-// Distributed under the MIT/X11 software license, see the accompanying
+// Copyright (c) 2011-2015 The Bitcoin developers
+// Copyright (c) 2016-2018 The Lobstex developers
+// Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "walletview.h"
@@ -9,6 +10,7 @@
 #include "bitcoingui.h"
 #include "blockexplorer.h"
 #include "clientmodel.h"
+#include "governancepage.h"
 #include "guiutil.h"
 #include "masternodeconfig.h"
 #include "multisenddialog.h"
@@ -34,6 +36,8 @@
 #include <QPushButton>
 #include <QSettings>
 #include <QVBoxLayout>
+#include <QFrame>
+
 
 WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
                                           clientModel(0),
@@ -85,18 +89,30 @@ WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
     horizontalLayout_Header->setStretch(2, 1);
     verticalLayout_8->addLayout(horizontalLayout_Header);
 
-    QVBoxLayout* vbox = new QVBoxLayout();
-    QHBoxLayout* hbox_buttons = new QHBoxLayout();
-    vbox->addWidget(frame_Header);
+    QVBoxLayout* vboxbig = new QVBoxLayout();
+      vboxbig->setContentsMargins(15, 15, 15, 15);
 
-    transactionView = new TransactionView(this);
-    vbox->addWidget(transactionView);
-    QPushButton* exportButton = new QPushButton(tr("&Export"), this);
-    exportButton->setToolTip(tr("Export the data in the current tab to a file"));
-#ifndef Q_OS_MAC // Icons on push buttons are very uncommon on Mac
-    exportButton->setIcon(QIcon(":/icons/export"));
-#endif
-    hbox_buttons->addStretch();
+      QFrame* txframe = new QFrame();
+      txframe->setContentsMargins(4, 22, 3, 10);
+      txframe->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+      txframe->setObjectName(QStringLiteral("txframe"));
+
+      vboxbig->addWidget(txframe);
+
+
+      QVBoxLayout* vbox = new QVBoxLayout(txframe);
+      vbox->setSpacing(3);
+      txframe->setLayout(vbox);
+
+      QHBoxLayout* hbox_buttons = new QHBoxLayout();
+
+      transactionView = new TransactionView(this);
+      vbox->addWidget(transactionView);
+      QPushButton* exportButton = new QPushButton(tr("&Export"), this);
+      exportButton->setToolTip(tr("Export the data in the current tab to a file"));
+  #ifndef Q_OS_MAC // Icons on push buttons are very uncommon on Mac
+  #endif
+      hbox_buttons->addStretch();
 
     // Sum of selected transactions
     QLabel* transactionSumLabel = new QLabel();                // Label
@@ -111,27 +127,32 @@ WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
     hbox_buttons->addWidget(transactionSum);
 
     hbox_buttons->addWidget(exportButton);
+    hbox_buttons->setContentsMargins(10, 0, 0, 0);
+
     vbox->addLayout(hbox_buttons);
-    transactionsPage->setLayout(vbox);
+    transactionsPage->setLayout(vboxbig);
 
     privacyPage = new PrivacyDialog();
+    governancePage = new GovernancePage();
     receiveCoinsPage = new ReceiveCoinsDialog();
     sendCoinsPage = new SendCoinsDialog();
 
     addWidget(overviewPage);
     addWidget(transactionsPage);
     addWidget(privacyPage);
+    addWidget(governancePage);
     addWidget(receiveCoinsPage);
     addWidget(sendCoinsPage);
     addWidget(explorerWindow);
 
     QSettings settings;
-  if (settings.value("fShowMasternodesTab").toBool()) {
-    masternodeListPage = new MasternodeList();
-    masternodeListAllPage = new MasternodeListAll();
-    addWidget(masternodeListPage);
-    addWidget(masternodeListAllPage);
+    if (settings.value("fShowMasternodesTab").toBool()) {
+      masternodeListPage = new MasternodeList();
+      masternodeListAllPage = new MasternodeListAll();
+      addWidget(masternodeListPage);
+      addWidget(masternodeListAllPage);
 }
+
     // Clicking on a transaction on the overview pre-selects the transaction on the transaction history page
     connect(overviewPage, SIGNAL(transactionClicked(QModelIndex)), transactionView, SLOT(focusTransaction(QModelIndex)));
 
@@ -180,11 +201,11 @@ void WalletView::setClientModel(ClientModel* clientModel)
     sendCoinsPage->setClientModel(clientModel);
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
-          masternodeListPage->setClientModel(clientModel);
-          masternodeListAllPage->setClientModel(clientModel);
-      }
-  }
-
+        masternodeListPage->setClientModel(clientModel);
+        masternodeListAllPage->setClientModel(clientModel);
+    }
+    governancePage->setClientModel(clientModel);
+}
 
 void WalletView::setWalletModel(WalletModel* walletModel)
 {
@@ -201,6 +222,7 @@ void WalletView::setWalletModel(WalletModel* walletModel)
     privacyPage->setModel(walletModel);
     receiveCoinsPage->setModel(walletModel);
     sendCoinsPage->setModel(walletModel);
+    governancePage->setWalletModel(walletModel);
 
     if (walletModel) {
         // Receive and pass through messages from wallet model
@@ -252,6 +274,10 @@ void WalletView::gotoHistoryPage()
     setCurrentWidget(transactionsPage);
 }
 
+void WalletView::gotoGovernancePage()
+{
+    setCurrentWidget(governancePage);
+}
 
 void WalletView::gotoBlockExplorerPage()
 {
@@ -375,14 +401,7 @@ void WalletView::backupWallet()
 
     if (filename.isEmpty())
         return;
-
-    if (!walletModel->backupWallet(filename)) {
-        emit message(tr("Backup Failed"), tr("There was an error trying to save the wallet data to %1.").arg(filename),
-            CClientUIInterface::MSG_ERROR);
-    } else {
-        emit message(tr("Backup Successful"), tr("The wallet data was successfully saved to %1.").arg(filename),
-            CClientUIInterface::MSG_INFORMATION);
-    }
+    walletModel->backupWallet(filename);
 }
 
 void WalletView::changePassphrase()

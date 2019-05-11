@@ -1,4 +1,5 @@
-// Copyright (c) 2012-2014 The Bitcoin developers
+// Copyright (c) 2012-2017 The Bitcoin Core developers
+// Copyright (c) 2016-2017 The Lobstex developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -6,7 +7,6 @@
 
 #include "tinyformat.h"
 
-#include <string>
 
 /**
  * Name of client reported in the 'version' message. Report the same name
@@ -39,13 +39,14 @@ const std::string CLIENT_NAME("Lobstex Core");
 
 //! First, include build.h if requested
 #ifdef HAVE_BUILD_INFO
-//#include "build.h"
+#include "obj/build.h"
 #endif
 
-//! git will put "#define GIT_ARCHIVE 1" on the next line inside archives.
+//! git will put "#define GIT_ARCHIVE 1" on the next line inside archives. 
+#define GIT_ARCHIVE 1
 #ifdef GIT_ARCHIVE
-#define GIT_COMMIT_ID "cbcb549"
-#define GIT_COMMIT_DATE "Tue, 9 Feb 2016 16:54:57 -0500"
+#define GIT_COMMIT_ID "5445b06a13a7fe12d1638f0317e80b5bc8691c6a"
+#define GIT_COMMIT_DATE "Thu, 18 Apr 2019 01:00:37 -0700"
 #endif
 
 #define BUILD_DESC_WITH_SUFFIX(maj, min, rev, build, suffix) \
@@ -55,7 +56,7 @@ const std::string CLIENT_NAME("Lobstex Core");
     "v" DO_STRINGIZE(maj) "." DO_STRINGIZE(min) "." DO_STRINGIZE(rev) "." DO_STRINGIZE(build) "-g" commit
 
 #define BUILD_DESC_FROM_UNKNOWN(maj, min, rev, build) \
-    "v" DO_STRINGIZE(maj) "." DO_STRINGIZE(min) "." DO_STRINGIZE(rev) "." DO_STRINGIZE(build) /*"-unk"*/
+    "v" DO_STRINGIZE(maj) "." DO_STRINGIZE(min) "." DO_STRINGIZE(rev) "." DO_STRINGIZE(build) "-unk"
 
 #ifndef BUILD_DESC
 #ifdef BUILD_SUFFIX
@@ -77,12 +78,6 @@ const std::string CLIENT_NAME("Lobstex Core");
 
 const std::string CLIENT_BUILD(BUILD_DESC CLIENT_VERSION_SUFFIX);
 const std::string CLIENT_DATE(BUILD_DATE);
-
-// To debug issues on version number, uncomment below three lines.
-// The first two lines print some values to compile, and the last line stop the compiling.
-//#pragma message "Version: " STRINGIZE(CLIENT_VERSION_MAJOR) "." STRINGIZE(CLIENT_VERSION_MINOR) "." STRINGIZE(CLIENT_VERSION_REVISION) "." STRINGIZE(CLIENT_VERSION_BUILD)
-//#pragma message "CLIENT_BUILD: " STRINGIZE(BUILD_DESC) " "  STRINGIZE(CLIENT_VERSION_SUFFIX)
-//#error aaaaaaaaaaaa
 
 static std::string FormatVersion(int nVersion)
 {

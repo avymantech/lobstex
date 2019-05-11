@@ -1,8 +1,5 @@
-// Copyright (c) 2011-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The PIVX developers	
-// Copyright (c) 2018 The Lobstex developers
-// Distributed under the MIT/X11 software license, see the accompanying
+// Copyright (c) 2017-2018 The Lobstex developers
+// Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "bip38tooldialog.h"
@@ -15,7 +12,7 @@
 #include "base58.h"
 #include "bip38.h"
 #include "init.h"
-#include "wallet.h"
+#include "wallet/wallet.h"
 #include "askpassphrasedialog.h"
 
 #include <string>
@@ -23,15 +20,13 @@
 
 #include <QClipboard>
 
-Bip38ToolDialog::Bip38ToolDialog(QWidget* parent) : QDialog(parent),
+Bip38ToolDialog::Bip38ToolDialog(QWidget* parent) : QDialog(parent, Qt::WindowSystemMenuHint | Qt::WindowTitleHint | Qt::WindowCloseButtonHint),
                                                     ui(new Ui::Bip38ToolDialog),
                                                     model(0)
 {
     ui->setupUi(this);
 
-#if QT_VERSION >= 0x040700
     ui->decryptedKeyOut_DEC->setPlaceholderText(tr("Click \"Decrypt Key\" to compute key"));
-#endif
 
     GUIUtil::setupAddressWidget(ui->addressIn_ENC, this);
     ui->addressIn_ENC->installEventFilter(this);

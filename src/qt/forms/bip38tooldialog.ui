@@ -44,9 +44,6 @@
         <layout class="QHBoxLayout" name="horizontalLayout_1_ENC">
          <item>
           <widget class="QLabel" name="label_5">
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
            <property name="minimumSize">
             <size>
              <width>85</width>
@@ -56,12 +53,15 @@
            <property name="text">
             <string>Address:</string>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
           </widget>
          </item>
          <item>
           <widget class="QValidatedLineEdit" name="addressIn_ENC">
            <property name="toolTip">
-            <string>The Lobstex address to sign the message with</string>
+            <string>The Lobstex address to encrypt</string>
            </property>
           </widget>
          </item>
@@ -105,9 +105,6 @@
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
           <widget class="QLabel" name="label_6">
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
            <property name="minimumSize">
             <size>
              <width>85</width>
@@ -116,6 +113,9 @@
            </property>
            <property name="text">
             <string>Passphrase: </string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -132,9 +132,6 @@
         <layout class="QHBoxLayout" name="horizontalLayout_2_ENC">
          <item>
           <widget class="QLabel" name="encryptedKeyLabel_ENC">
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
            <property name="minimumSize">
             <size>
              <width>85</width>
@@ -146,6 +143,9 @@
            </property>
            <property name="textFormat">
             <enum>Qt::PlainText</enum>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -182,14 +182,10 @@
          <item>
           <widget class="QPushButton" name="encryptKeyButton_ENC">
            <property name="toolTip">
-            <string>Sign the message to prove you own this Lobstex address</string>
+            <string>Encrypt the private key for this Lobstex address</string>
            </property>
            <property name="text">
             <string>Encrypt &amp;Key</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../lobstex.qrc">
-             <normaloff>:/icons/edit</normaloff>:/icons/edit</iconset>
            </property>
            <property name="autoDefault">
             <bool>false</bool>
@@ -199,14 +195,10 @@
          <item>
           <widget class="QPushButton" name="clearButton_ENC">
            <property name="toolTip">
-            <string>Reset all sign message fields</string>
+            <string>Reset all fields</string>
            </property>
            <property name="text">
             <string>Clear &amp;All</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../lobstex.qrc">
-             <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
            </property>
            <property name="autoDefault">
             <bool>false</bool>
@@ -281,9 +273,6 @@
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QLabel" name="label_2">
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
            <property name="minimumSize">
             <size>
              <width>85</width>
@@ -293,12 +282,15 @@
            <property name="text">
             <string>Encrypted Key:</string>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
           </widget>
          </item>
          <item>
           <widget class="QValidatedLineEdit" name="encryptedKeyIn_DEC">
            <property name="toolTip">
-            <string>The Lobstex address the message was signed with</string>
+            <string>The encrypted private key</string>
            </property>
           </widget>
          </item>
@@ -325,9 +317,6 @@
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QLabel" name="label">
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
            <property name="minimumSize">
             <size>
              <width>85</width>
@@ -336,6 +325,9 @@
            </property>
            <property name="text">
             <string>Passphrase: </string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -353,14 +345,10 @@
          <item>
           <widget class="QPushButton" name="decryptKeyButton_DEC">
            <property name="toolTip">
-            <string>Verify the message to ensure it was signed with the specified Lobstex address</string>
+            <string>Decrypt the entered key using the passphrase</string>
            </property>
            <property name="text">
             <string>Decrypt &amp;Key</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../lobstex.qrc">
-             <normaloff>:/icons/transaction_0</normaloff>:/icons/transaction_0</iconset>
            </property>
            <property name="autoDefault">
             <bool>false</bool>
@@ -374,10 +362,6 @@
            </property>
            <property name="text">
             <string>Clear &amp;All</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../lobstex.qrc">
-             <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
            </property>
            <property name="autoDefault">
             <bool>false</bool>

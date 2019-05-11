@@ -1,7 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2015-2017 The PIVX developers	
-// Copyright (c) 2018-2019 The Lobstex developers
+// Copyright (c) 2015-2018 The Lobstex developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -48,6 +47,19 @@ CTxIn::CTxIn(uint256 hashPrevTx, uint32_t nOut, CScript scriptSigIn, uint32_t nS
     nSequence = nSequenceIn;
 }
 
+CTxIn::CTxIn(const libzerocoin::CoinSpend& spend, libzerocoin::CoinDenomination denom)
+{
+    //Serialize the coinspend object and append it to a CScript
+    CDataStream serializedCoinSpend(SER_NETWORK, PROTOCOL_VERSION);
+    serializedCoinSpend << spend;
+    std::vector<unsigned char> data(serializedCoinSpend.begin(), serializedCoinSpend.end());
+
+    scriptSig = CScript() << OP_ZEROCOINSPEND << data.size();
+    scriptSig.insert(scriptSig.end(), data.begin(), data.end());
+    prevout.SetNull();
+    nSequence = denom;
+}
+
 std::string CTxIn::ToString() const
 {
     std::string str;
@@ -55,7 +67,7 @@ std::string CTxIn::ToString() const
     str += prevout.ToString();
     if (prevout.IsNull())
         if(scriptSig.IsZerocoinSpend())
-            str += strprintf(", zerocoinspend %s", HexStr(scriptSig));
+            str += strprintf(", zerocoinspend %s...", HexStr(scriptSig).substr(0, 25));
         else
             str += strprintf(", coinbase %s", HexStr(scriptSig));
     else
@@ -134,6 +146,19 @@ CTransaction& CTransaction::operator=(const CTransaction &tx) {
     return *this;
 }
 
+bool CTransaction::IsCoinStake() const
+{
+    if (vin.empty())
+        return false;
+
+    // ppcoin: the coin stake transaction is marked with the first output empty
+    bool fAllowNull = vin[0].scriptSig.IsZerocoinSpend();
+    if (vin[0].prevout.IsNull() && !fAllowNull)
+        return false;
+
+    return (vin.size() > 0 && vout.size() >= 2 && vout[0].IsEmpty());
+}
+
 CAmount CTransaction::GetValueOut() const
 {
     CAmount nValueOut = 0;
@@ -153,7 +178,7 @@ CAmount CTransaction::GetValueOut() const
 
 CAmount CTransaction::GetZerocoinMinted() const
 {
-    for (const CTxOut txOut : vout) {
+    for (const CTxOut& txOut : vout) {
         if(!txOut.scriptPubKey.IsZerocoinMint())
             continue;
 
@@ -165,7 +190,7 @@ CAmount CTransaction::GetZerocoinMinted() const
 
 bool CTransaction::UsesUTXO(const COutPoint out)
 {
-    for (const CTxIn in : vin) {
+    for (const CTxIn& in : vin) {
         if (in.prevout == out)
             return true;
     }
@@ -188,16 +213,11 @@ CAmount CTransaction::GetZerocoinSpent() const
         return 0;
 
     CAmount nValueOut = 0;
-    for (const CTxIn txin : vin) {
+    for (const CTxIn& txin : vin) {
         if(!txin.scriptSig.IsZerocoinSpend())
-            LogPrintf("%s is not zcspend\n", __func__);
+            continue;
 
-        std::vector<char, zero_after_free_allocator<char> > dataTxIn;
-        dataTxIn.insert(dataTxIn.end(), txin.scriptSig.begin() + 4, txin.scriptSig.end());
-
-        CDataStream serializedCoinSpend(dataTxIn, SER_NETWORK, PROTOCOL_VERSION);
-        libzerocoin::CoinSpend spend(Params().Zerocoin_Params(), serializedCoinSpend);
-        nValueOut += libzerocoin::ZerocoinDenominationToAmount(spend.getDenomination());
+        nValueOut += txin.nSequence * COIN;
     }
 
     return nValueOut;
@@ -206,7 +226,7 @@ CAmount CTransaction::GetZerocoinSpent() const
 int CTransaction::GetZerocoinMintCount() const
 {
     int nCount = 0;
-    for (const CTxOut out : vout) {
+    for (const CTxOut& out : vout) {
         if (out.scriptPubKey.IsZerocoinMint())
             nCount++;
     }

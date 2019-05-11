@@ -61,6 +61,9 @@
     <name>AskPassphraseDialog</name>
     </context>
 <context>
+    <name>BanTableModel</name>
+    </context>
+<context>
     <name>Bip38ToolDialog</name>
     </context>
 <context>
@@ -82,6 +85,9 @@
     <name>FreespaceChecker</name>
     </context>
 <context>
+    <name>GovernancePage</name>
+    </context>
+<context>
     <name>HelpMessageDialog</name>
     </context>
 <context>
@@ -92,6 +98,9 @@
     </context>
 <context>
     <name>MultiSendDialog</name>
+    </context>
+<context>
+    <name>MultisigDialog</name>
     </context>
 <context>
     <name>ObfuscationConfig</name>
@@ -113,6 +122,9 @@
     </context>
 <context>
     <name>PrivacyDialog</name>
+    </context>
+<context>
+    <name>ProposalFrame</name>
     </context>
 <context>
     <name>QObject</name>
@@ -183,7 +195,7 @@
     </message>
     </context>
 <context>
-    <name>ZLOBSControlDialog</name>
+    <name>ZPivControlDialog</name>
     </context>
 <context>
     <name>lobstex-core</name>

@@ -58,7 +58,7 @@ Other implementations of the zerocoin protocol only allow for spending of one de
 The Lobstex zerocoin implementation is structured in such a way that denominations aren't needed to be known by the average user.
 
 ### Fees
-zLOBS transactions require more computation and disk space than typical Lobstex transactions, and as such require a higher transaction fee in order to prevent network spam. Fees are only charged when minting zLOBS, each minted denomination is charged a flat rate of 0.01 LOBS. zLOBS spends are not charged a transaction fee unless the change is minted into zLOBS, see the *Minting Change* section for details on fees for zLOBS spends with minted change.
+zPiv transactions require more computation and disk space than typical Lobstex transactions, and as such require a higher transaction fee in order to prevent network spam. Fees are only charged when minting zPiv, each minted denomination is charged a flat rate of 0.01 Piv. zPiv spends are not charged a transaction fee unless the change is minted into zPiv, see the *Minting Change* section for details on fees for zPiv spends with minted change.
 
 ### Converting LOBS to zLOBS (*zLOBS Mint*)
 **GUI** - Conversion from LOBS to zLOBS can be done using the `Privacy Dialog` in the QT wallet. Enter the amount of LOBS you would like to convert and click `Mint Zerocoin`.

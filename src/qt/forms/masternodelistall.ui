@@ -6,65 +6,69 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>746</width>
-    <height>473</height>
+    <width>723</width>
+    <height>457</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_3">
+  <layout class="QVBoxLayout" name="topLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
    <property name="leftMargin">
-    <number>10</number>
+    <number>15</number>
    </property>
    <property name="topMargin">
-    <number>10</number>
+    <number>15</number>
    </property>
    <property name="rightMargin">
-    <number>8</number>
+    <number>15</number>
    </property>
    <property name="bottomMargin">
-    <number>8</number>
+    <number>15</number>
    </property>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="leftMargin">
-      <number>5</number>
+    <widget class="QFrame" name="frameListAll">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
      </property>
-     <property name="topMargin">
-      <number>6</number>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
      </property>
-     <property name="rightMargin">
-      <number>7</number>
-     </property>
-     <property name="bottomMargin">
-      <number>7</number>
-     </property>
-     <item>
-      <widget class="QFrame" name="frameList">
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <property name="spacing">
-         <number>5</number>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="bottomMargin">
+         <number>0</number>
         </property>
+        <item>
+         <spacer name="horizontalSpacer0">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <property name="leftMargin">
            <number>8</number>
           </property>
           <property name="topMargin">
-           <number>12</number>
+           <number>9</number>
           </property>
           <property name="rightMargin">
            <number>13</number>
           </property>
           <property name="bottomMargin">
-           <number>16</number>
+           <number>10</number>
           </property>
           <item>
            <widget class="QLabel" name="label_filter">
@@ -111,6 +115,25 @@
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="bottomMargin">
+           <number>20</number>
+          </property>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>7</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
           <item>
            <widget class="QTableWidget" name="tableWidgetMasternodes">
             <property name="palette">
@@ -200,14 +223,28 @@
             </column>
            </widget>
           </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>7</width>
+              <height>6</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
         </item>
        </layout>
-       <zorder></zorder>
-       <zorder></zorder>
-      </widget>
-     </item>
-    </layout>
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>

@@ -6,13 +6,20 @@
         <file alias="da">locale/lobstex_da.qm</file>
         <file alias="de">locale/lobstex_de.qm</file>
         <file alias="en">locale/lobstex_en.qm</file>
+        <file alias="en_GB">locale/lobstex_en_GB.qm</file>
         <file alias="en_US">locale/lobstex_en_US.qm</file>
+        <file alias="eo">locale/lobstex_eo.qm</file>
         <file alias="es">locale/lobstex_es.qm</file>
+        <file alias="es_ES">locale/lobstex_es_ES.qm</file>
         <file alias="fi">locale/lobstex_fi.qm</file>
         <file alias="fr_FR">locale/lobstex_fr_FR.qm</file>
+        <file alias="hi_IN">locale/lobstex_hi_IN.qm</file>
+        <file alias="hr">locale/lobstex_hr.qm</file>
+        <file alias="hr_HR">locale/lobstex_hr_HR.qm</file>
         <file alias="it">locale/lobstex_it.qm</file>
         <file alias="ja">locale/lobstex_ja.qm</file>
         <file alias="ko_KR">locale/lobstex_ko_KR.qm</file>
+        <file alias="lt_LT">locale/lobstex_lt_LT.qm</file>
         <file alias="nl">locale/lobstex_nl.qm</file>
         <file alias="pl">locale/lobstex_pl.qm</file>
         <file alias="pt">locale/lobstex_pt.qm</file>
@@ -23,6 +30,7 @@
         <file alias="sv">locale/lobstex_sv.qm</file>
         <file alias="tr">locale/lobstex_tr.qm</file>
         <file alias="uk">locale/lobstex_uk.qm</file>
+        <file alias="vi">locale/lobstex_vi.qm</file>
         <file alias="zh_CN">locale/lobstex_zh_CN.qm</file>
         <file alias="zh_TW">locale/lobstex_zh_TW.qm</file>
     </qresource>

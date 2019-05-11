@@ -15,7 +15,7 @@ it will change it to
 
 It will do this for all the files in the folder and its children.
 
-Author: @gublobson
+Author: @gubatron
 '''
 import os
 import time

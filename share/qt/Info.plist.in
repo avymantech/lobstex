@@ -30,6 +30,12 @@
 
   <key>CFBundleExecutable</key>
   <string>Lobstex-Qt</string>
+  
+  <key>CFBundleName</key>
+  <string>Lobstex-Qt</string>
+
+  <key>LSHasLocalizedDisplayName</key>
+  <true/>
 
   <key>CFBundleIdentifier</key>
   <string>io.lobstex.Lobstex-Qt</string>

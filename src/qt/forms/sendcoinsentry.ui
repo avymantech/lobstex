@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>729</width>
-    <height>156</height>
+    <height>162</height>
    </rect>
   </property>
   <property name="focusPolicy">
@@ -51,123 +51,67 @@
       <item>
        <widget class="QValidatedLineEdit" name="payTo">
         <property name="toolTip">
-         <string>The Altair address to send the payment to</string>
+         <string>The Lobstex address to send the payment to</string>
         </property>
        </widget>
       </item>
       <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="spacing">
+         <number>0</number>
         </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
+        <property name="leftMargin">
+         <number>5</number>
         </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>5</width>
-          <height>5</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QToolButton" name="addressBookButton">
-        <property name="toolTip">
-         <string>Choose previously used address</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="../AeriumX-BETA-1.1/src/qt/Altair.qrc">
-          <normaloff>:/icons/address-book</normaloff>:/icons/address-book</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>25</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="shortcut">
-         <string>Alt+A</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>4</width>
-          <height>4</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QToolButton" name="pasteButton">
-        <property name="toolTip">
-         <string>Paste address from clipboard</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="../AeriumX-BETA-1.1/src/qt/Altair.qrc">
-          <normaloff>:/icons/editpaste</normaloff>:/icons/editpaste</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>25</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="shortcut">
-         <string>Alt+P</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>4</width>
-          <height>4</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QToolButton" name="deleteButton">
-        <property name="toolTip">
-         <string>Remove this entry</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="../AeriumX-BETA-1.1/src/qt/Altair.qrc">
-          <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>25</width>
-          <height>25</height>
-         </size>
-        </property>
-       </widget>
+        <item>
+         <widget class="QToolButton" name="addressBookButton">
+          <property name="toolTip">
+           <string>Choose previously used address</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../lobstex.qrc">
+            <normaloff>:/icons/address-book</normaloff>:/icons/address-book</iconset>
+          </property>
+          <property name="shortcut">
+           <string>Alt+A</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="pasteButton">
+          <property name="toolTip">
+           <string>Paste address from clipboard</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../lobstex.qrc">
+            <normaloff>:/icons/editpaste</normaloff>:/icons/editpaste</iconset>
+          </property>
+          <property name="shortcut">
+           <string>Alt+P</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="deleteButton">
+          <property name="toolTip">
+           <string>Remove this entry</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../lobstex.qrc">
+            <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </item>
@@ -220,7 +164,7 @@
     <item row="3" column="1">
      <widget class="QLabel" name="messageTextLabel">
       <property name="toolTip">
-       <string>A message that was attached to the Altair: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Altair network.</string>
+       <string>A message that was attached to the Lobstex: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Lobstex network.</string>
       </property>
       <property name="textFormat">
        <enum>Qt::PlainText</enum>
@@ -688,7 +632,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="../AeriumX-BETA-1.1/src/qt/Altair.qrc">
+         <iconset resource="../lobstex.qrc">
           <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
         </property>
        </widget>
@@ -1224,7 +1168,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="../AeriumX-BETA-1.1/src/qt/Altair.qrc">
+         <iconset resource="../lobstex.qrc">
           <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
         </property>
        </widget>
@@ -1286,9 +1230,6 @@
  </customwidgets>
  <tabstops>
   <tabstop>payTo</tabstop>
-  <tabstop>addressBookButton</tabstop>
-  <tabstop>pasteButton</tabstop>
-  <tabstop>deleteButton</tabstop>
   <tabstop>addAsLabel</tabstop>
   <tabstop>payAmount</tabstop>
   <tabstop>payAmount_is</tabstop>
@@ -1297,7 +1238,7 @@
   <tabstop>deleteButton_s</tabstop>
  </tabstops>
  <resources>
-  <include location="../AeriumX-BETA-1.1/src/qt/Altair.qrc"/>
+  <include location="../lobstex.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -20,9 +20,6 @@ QT_TRANSLATE_NOOP("lobstex-core", ""
 "single IP (e.g. 1.2.3.4), a network/netmask (e.g. 1.2.3.4/255.255.255.0) or "
 "a network/CIDR (e.g. 1.2.3.4/24). This option can be specified multiple times"),
 QT_TRANSLATE_NOOP("lobstex-core", ""
-"An error occurred while setting up the RPC address %s port %u for listening: "
-"%s"),
-QT_TRANSLATE_NOOP("lobstex-core", ""
 "Bind to given address and always listen on it. Use [host]:port notation for "
 "IPv6"),
 QT_TRANSLATE_NOOP("lobstex-core", ""
@@ -50,6 +47,9 @@ QT_TRANSLATE_NOOP("lobstex-core", ""
 "Delete all wallet transactions and only recover those parts of the "
 "blockchain through -rescan on startup"),
 QT_TRANSLATE_NOOP("lobstex-core", ""
+"Delete all zerocoin spends and mints that have been recorded to the "
+"blockchain database and reindex them (0-1, default: %u)"),
+QT_TRANSLATE_NOOP("lobstex-core", ""
 "Disable all Lobstex specific functionality (Masternodes, Zerocoin, SwiftX, "
 "Budgeting) (0-1, default: %u)"),
 QT_TRANSLATE_NOOP("lobstex-core", ""
@@ -58,8 +58,14 @@ QT_TRANSLATE_NOOP("lobstex-core", ""
 QT_TRANSLATE_NOOP("lobstex-core", ""
 "Enable SwiftX, show confirmations for locked transactions (bool, default: %s)"),
 QT_TRANSLATE_NOOP("lobstex-core", ""
+"Enable automatic Zerocoin minting from specific addresses (0-1, default: %u)"),
+QT_TRANSLATE_NOOP("lobstex-core", ""
 "Enable automatic wallet backups triggered after each zLOBS minting (0-1, "
 "default: %u)"),
+QT_TRANSLATE_NOOP("lobstex-core", ""
+"Enable or disable staking functionality for LOBS inputs (0-1, default: %u)"),
+QT_TRANSLATE_NOOP("lobstex-core", ""
+"Enable or disable staking functionality for zLOBS inputs (0-1, default: %u)"),
 QT_TRANSLATE_NOOP("lobstex-core", ""
 "Enable spork administration functionality with the appropriate private key."),
 QT_TRANSLATE_NOOP("lobstex-core", ""
@@ -67,6 +73,8 @@ QT_TRANSLATE_NOOP("lobstex-core", ""
 "be solved instantly."),
 QT_TRANSLATE_NOOP("lobstex-core", ""
 "Error: Listening for incoming connections failed (listen returned error %s)"),
+QT_TRANSLATE_NOOP("lobstex-core", ""
+"Error: The transaction is larger than the maximum allowed transaction size!"),
 QT_TRANSLATE_NOOP("lobstex-core", ""
 "Error: The transaction was rejected! This might happen if some of the coins "
 "in your wallet were already spent, such as if you used a copy of wallet.dat "
@@ -89,6 +97,11 @@ QT_TRANSLATE_NOOP("lobstex-core", ""
 "Execute command when the best block changes (%s in cmd is replaced by block "
 "hash)"),
 QT_TRANSLATE_NOOP("lobstex-core", ""
+"Execute command when the best block changes and its size is over (%s in cmd "
+"is replaced by block hash, %d with the block size)"),
+QT_TRANSLATE_NOOP("lobstex-core", ""
+"Failed to find coin set amongst held coins with less than maxNumber of Spends"),
+QT_TRANSLATE_NOOP("lobstex-core", ""
 "Fees (in LOBS/Kb) smaller than this are considered zero fee for relaying "
 "(default: %s)"),
 QT_TRANSLATE_NOOP("lobstex-core", ""
@@ -103,6 +116,9 @@ QT_TRANSLATE_NOOP("lobstex-core", ""
 QT_TRANSLATE_NOOP("lobstex-core", ""
 "If paytxfee is not set, include enough fee so transactions begin "
 "confirmation on average within n blocks (default: %u)"),
+QT_TRANSLATE_NOOP("lobstex-core", ""
+"In rare cases, a spend with 7 coins exceeds our maximum allowable "
+"transaction size, please retry spend using 6 or less coins"),
 QT_TRANSLATE_NOOP("lobstex-core", ""
 "In this mode -genproclimit controls how many blocks are generated "
 "immediately."),
@@ -120,8 +136,13 @@ QT_TRANSLATE_NOOP("lobstex-core", ""
 "Maintain a full transaction index, used by the getrawtransaction rpc call "
 "(default: %u)"),
 QT_TRANSLATE_NOOP("lobstex-core", ""
+"Maximum average size of an index occurrence in the block spam filter "
+"(default: %u)"),
+QT_TRANSLATE_NOOP("lobstex-core", ""
 "Maximum size of data in data carrier transactions we relay and mine "
 "(default: %u)"),
+QT_TRANSLATE_NOOP("lobstex-core", ""
+"Maximum size of the list of indexes in the block spam filter (default: %u)"),
 QT_TRANSLATE_NOOP("lobstex-core", ""
 "Maximum total fees to use in a single wallet transaction, setting too low "
 "may abort large transactions (default: %s)"),
@@ -148,6 +169,9 @@ QT_TRANSLATE_NOOP("lobstex-core", ""
 QT_TRANSLATE_NOOP("lobstex-core", ""
 "Set maximum size of high-priority/low-fee transactions in bytes (default: %d)"),
 QT_TRANSLATE_NOOP("lobstex-core", ""
+"Set the number of included blocks to precompute per cycle. (minimum: %d) "
+"(maximum: %d) (default: %d)"),
+QT_TRANSLATE_NOOP("lobstex-core", ""
 "Set the number of script verification threads (%u to %d, 0 = auto, <0 = "
 "leave that many cores free, default: %d)"),
 QT_TRANSLATE_NOOP("lobstex-core", ""
@@ -157,10 +181,24 @@ QT_TRANSLATE_NOOP("lobstex-core", ""
 "Show N confirmations for a successfully locked transaction (0-9999, default: "
 "%u)"),
 QT_TRANSLATE_NOOP("lobstex-core", ""
+"Specify custom backup path to add a copy of any automatic zLOBS backup. If "
+"set as dir, every backup generates a timestamped file. If set as file, will "
+"rewrite to that file every backup. If backuppath is set as well, 4 backups "
+"will happen"),
+QT_TRANSLATE_NOOP("lobstex-core", ""
+"Specify custom backup path to add a copy of any wallet backup. If set as "
+"dir, every backup generates a timestamped file. If set as file, will rewrite "
+"to that file every backup."),
+QT_TRANSLATE_NOOP("lobstex-core", ""
 "Support filtering of blocks and transaction with bloom filters (default: %u)"),
 QT_TRANSLATE_NOOP("lobstex-core", ""
 "SwiftX requires inputs with at least 6 confirmations, you might need to wait "
 "a few minutes and try again."),
+QT_TRANSLATE_NOOP("lobstex-core", ""
+"The block database contains a block which appears to be from the future. "
+"This may be due to your computer's date and time being set incorrectly. Only "
+"rebuild the block database if you are sure that your computer's date and "
+"time are correct"),
 QT_TRANSLATE_NOOP("lobstex-core", ""
 "This is a pre-release test build - use at your own risk - do not use for "
 "staking or merchant applications!"),
@@ -169,18 +207,8 @@ QT_TRANSLATE_NOOP("lobstex-core", ""
 "the OpenSSL Toolkit <https://www.openssl.org/> and cryptographic software "
 "written by Eric Young and UPnP software written by Thomas Bernard."),
 QT_TRANSLATE_NOOP("lobstex-core", ""
-"To use lobstexd, or the -server option to lobstex-qt, you must set an rpcpassword "
-"in the configuration file:\n"
-"%s\n"
-"It is recommended you use the following random password:\n"
-"rpcuser=lobstexrpc\n"
-"rpcpassword=%s\n"
-"(you do not need to remember this password)\n"
-"The username and password MUST NOT be the same.\n"
-"If the file does not exist, create it with owner-readable-only file "
-"permissions.\n"
-"It is also recommended to set alertnotify so you are notified of problems;\n"
-"for example: alertnotify=echo %%s | mail -s \"Lobstex Alert\" admin@foo.com\n"),
+"Total length of network version string (%i) exceeds maximum length (%i). "
+"Reduce the number or size of uacomments."),
 QT_TRANSLATE_NOOP("lobstex-core", ""
 "Unable to bind to %s on this computer. Lobstex Core is probably already running."),
 QT_TRANSLATE_NOOP("lobstex-core", ""
@@ -225,19 +253,20 @@ QT_TRANSLATE_NOOP("lobstex-core", ""
 QT_TRANSLATE_NOOP("lobstex-core", ""
 "You must specify a masternodeprivkey in the configuration. Please see "
 "documentation for help."),
-QT_TRANSLATE_NOOP("lobstex-core", "(46200 could be used only on mainnet)"),
+QT_TRANSLATE_NOOP("lobstex-core", "(51472 could be used only on mainnet)"),
 QT_TRANSLATE_NOOP("lobstex-core", "(default: %s)"),
 QT_TRANSLATE_NOOP("lobstex-core", "(default: 1)"),
-QT_TRANSLATE_NOOP("lobstex-core", "(must be 46200 for mainnet)"),
+QT_TRANSLATE_NOOP("lobstex-core", "(must be 51472 for mainnet)"),
 QT_TRANSLATE_NOOP("lobstex-core", "<category> can be:"),
 QT_TRANSLATE_NOOP("lobstex-core", "Accept command line and JSON-RPC commands"),
 QT_TRANSLATE_NOOP("lobstex-core", "Accept connections from outside (default: 1 if no -proxy or -connect)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Accept public REST requests (default: %u)"),
-QT_TRANSLATE_NOOP("lobstex-core", "Acceptable ciphers (default: %s)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Add a node to connect to and attempt to keep the connection open"),
+QT_TRANSLATE_NOOP("lobstex-core", "Adding Wrapped Serials supply..."),
 QT_TRANSLATE_NOOP("lobstex-core", "Allow DNS lookups for -addnode, -seednode and -connect"),
 QT_TRANSLATE_NOOP("lobstex-core", "Already have that input."),
 QT_TRANSLATE_NOOP("lobstex-core", "Always query for peer addresses via DNS lookup (default: %u)"),
+QT_TRANSLATE_NOOP("lobstex-core", "Append comment to the user agent string"),
 QT_TRANSLATE_NOOP("lobstex-core", "Attempt to force blockchain corruption recovery"),
 QT_TRANSLATE_NOOP("lobstex-core", "Attempt to recover private keys from a corrupt wallet.dat"),
 QT_TRANSLATE_NOOP("lobstex-core", "Automatically create Tor hidden service (default: %d)"),
@@ -251,6 +280,8 @@ QT_TRANSLATE_NOOP("lobstex-core", "Cannot resolve -bind address: '%s'"),
 QT_TRANSLATE_NOOP("lobstex-core", "Cannot resolve -externalip address: '%s'"),
 QT_TRANSLATE_NOOP("lobstex-core", "Cannot resolve -whitebind address: '%s'"),
 QT_TRANSLATE_NOOP("lobstex-core", "Cannot write default address"),
+QT_TRANSLATE_NOOP("lobstex-core", "CoinSpend: Accumulator witness does not verify"),
+QT_TRANSLATE_NOOP("lobstex-core", "CoinSpend: failed check"),
 QT_TRANSLATE_NOOP("lobstex-core", "Collateral not valid."),
 QT_TRANSLATE_NOOP("lobstex-core", "Connect only to the specified node(s)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Connect through SOCKS5 proxy"),
@@ -258,11 +289,10 @@ QT_TRANSLATE_NOOP("lobstex-core", "Connect to a node to retrieve peer addresses,
 QT_TRANSLATE_NOOP("lobstex-core", "Connection options:"),
 QT_TRANSLATE_NOOP("lobstex-core", "Copyright (C) 2009-%i The Bitcoin Core Developers"),
 QT_TRANSLATE_NOOP("lobstex-core", "Copyright (C) 2014-%i The Dash Core Developers"),
-QT_TRANSLATE_NOOP("lobstex-core", "Copyright (C) 2015-%i Pivx Core Developers"),
-QT_TRANSLATE_NOOP("lobstex-core", "Copyright (C) 2018-%i The Lobstex Core Developers"),
+QT_TRANSLATE_NOOP("lobstex-core", "Copyright (C) 2015-%i The Lobstex Core Developers"),
 QT_TRANSLATE_NOOP("lobstex-core", "Corrupted block database detected"),
-QT_TRANSLATE_NOOP("lobstex-core", "Could not parse -rpcbind value %s as network address"),
 QT_TRANSLATE_NOOP("lobstex-core", "Could not parse masternode.conf"),
+QT_TRANSLATE_NOOP("lobstex-core", "Couldn't generate the accumulator witness"),
 QT_TRANSLATE_NOOP("lobstex-core", "Debugging/Testing options:"),
 QT_TRANSLATE_NOOP("lobstex-core", "Delete blockchain folders and resync from scratch"),
 QT_TRANSLATE_NOOP("lobstex-core", "Disable OS notifications for incoming transactions (default: %u)"),
@@ -274,6 +304,7 @@ QT_TRANSLATE_NOOP("lobstex-core", "Do not load the wallet and disable wallet RPC
 QT_TRANSLATE_NOOP("lobstex-core", "Do you want to rebuild the block database now?"),
 QT_TRANSLATE_NOOP("lobstex-core", "Done loading"),
 QT_TRANSLATE_NOOP("lobstex-core", "Enable automatic Zerocoin minting (0-1, default: %u)"),
+QT_TRANSLATE_NOOP("lobstex-core", "Enable precomputation of zLOBS spends and stakes (0-1, default %u)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Enable publish hash block in <address>"),
 QT_TRANSLATE_NOOP("lobstex-core", "Enable publish hash transaction (locked via SwiftX) in <address>"),
 QT_TRANSLATE_NOOP("lobstex-core", "Enable publish hash transaction in <address>"),
@@ -293,18 +324,25 @@ QT_TRANSLATE_NOOP("lobstex-core", "Error loading wallet.dat: Wallet requires new
 QT_TRANSLATE_NOOP("lobstex-core", "Error opening block database"),
 QT_TRANSLATE_NOOP("lobstex-core", "Error reading from database, shutting down."),
 QT_TRANSLATE_NOOP("lobstex-core", "Error recovering public key."),
+QT_TRANSLATE_NOOP("lobstex-core", "Error writing zerocoinDB to disk"),
 QT_TRANSLATE_NOOP("lobstex-core", "Error"),
 QT_TRANSLATE_NOOP("lobstex-core", "Error: A fatal internal error occured, see debug.log for details"),
+QT_TRANSLATE_NOOP("lobstex-core", "Error: A fatal internal error occurred, see debug.log for details"),
 QT_TRANSLATE_NOOP("lobstex-core", "Error: Can't select current denominated inputs"),
 QT_TRANSLATE_NOOP("lobstex-core", "Error: Disk space is low!"),
+QT_TRANSLATE_NOOP("lobstex-core", "Error: No valid utxo!"),
 QT_TRANSLATE_NOOP("lobstex-core", "Error: Unsupported argument -tor found, use -onion."),
 QT_TRANSLATE_NOOP("lobstex-core", "Error: Wallet locked, unable to create transaction!"),
 QT_TRANSLATE_NOOP("lobstex-core", "Error: You already have pending entries in the Obfuscation pool"),
 QT_TRANSLATE_NOOP("lobstex-core", "Failed to calculate accumulator checkpoint"),
+QT_TRANSLATE_NOOP("lobstex-core", "Failed to create mint"),
+QT_TRANSLATE_NOOP("lobstex-core", "Failed to find Zerocoins in wallet.dat"),
 QT_TRANSLATE_NOOP("lobstex-core", "Failed to listen on any port. Use -listen=0 if you want this."),
-QT_TRANSLATE_NOOP("lobstex-core", "Failed to read block index"),
+QT_TRANSLATE_NOOP("lobstex-core", "Failed to parse host:port string"),
 QT_TRANSLATE_NOOP("lobstex-core", "Failed to read block"),
-QT_TRANSLATE_NOOP("lobstex-core", "Failed to write block index"),
+QT_TRANSLATE_NOOP("lobstex-core", "Failed to select a zerocoin"),
+QT_TRANSLATE_NOOP("lobstex-core", "Failed to wipe zerocoinDB"),
+QT_TRANSLATE_NOOP("lobstex-core", "Failed to write coin serial number into wallet"),
 QT_TRANSLATE_NOOP("lobstex-core", "Fee (in LOBS/kB) to add to transactions you send (default: %s)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Finalizing transaction."),
 QT_TRANSLATE_NOOP("lobstex-core", "Force safe mode (default: %u)"),
@@ -325,7 +363,6 @@ QT_TRANSLATE_NOOP("lobstex-core", "Input is not valid."),
 QT_TRANSLATE_NOOP("lobstex-core", "Insufficient funds"),
 QT_TRANSLATE_NOOP("lobstex-core", "Insufficient funds."),
 QT_TRANSLATE_NOOP("lobstex-core", "Invalid -onion address or hostname: '%s'"),
-QT_TRANSLATE_NOOP("lobstex-core", "Invalid -proxy address or hostname: '%s'"),
 QT_TRANSLATE_NOOP("lobstex-core", "Invalid amount for -maxtxfee=<amount>: '%s'"),
 QT_TRANSLATE_NOOP("lobstex-core", "Invalid amount for -minrelaytxfee=<amount>: '%s'"),
 QT_TRANSLATE_NOOP("lobstex-core", "Invalid amount for -mintxfee=<amount>: '%s'"),
@@ -353,16 +390,20 @@ QT_TRANSLATE_NOOP("lobstex-core", "Loading masternode payment cache..."),
 QT_TRANSLATE_NOOP("lobstex-core", "Loading sporks..."),
 QT_TRANSLATE_NOOP("lobstex-core", "Loading wallet... (%3.2f %%)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Loading wallet..."),
+QT_TRANSLATE_NOOP("lobstex-core", "Location of the auth cookie (default: data dir)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Lock is already in place."),
 QT_TRANSLATE_NOOP("lobstex-core", "Lock masternodes from masternode configuration file (default: %u)"),
+QT_TRANSLATE_NOOP("lobstex-core", "Lookup(): Invalid -proxy address or hostname: '%s'"),
 QT_TRANSLATE_NOOP("lobstex-core", "Maintain at most <n> connections to peers (default: %u)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Masternode options:"),
 QT_TRANSLATE_NOOP("lobstex-core", "Masternode queue is full."),
 QT_TRANSLATE_NOOP("lobstex-core", "Masternode:"),
 QT_TRANSLATE_NOOP("lobstex-core", "Maximum per-connection receive buffer, <n>*1000 bytes (default: %u)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Maximum per-connection send buffer, <n>*1000 bytes (default: %u)"),
+QT_TRANSLATE_NOOP("lobstex-core", "Mint did not make it into blockchain"),
 QT_TRANSLATE_NOOP("lobstex-core", "Missing input transaction information."),
 QT_TRANSLATE_NOOP("lobstex-core", "Mixing in progress..."),
+QT_TRANSLATE_NOOP("lobstex-core", "Need address because change is not exact"),
 QT_TRANSLATE_NOOP("lobstex-core", "Need to specify a port with -whitebind: '%s'"),
 QT_TRANSLATE_NOOP("lobstex-core", "No Masternodes detected."),
 QT_TRANSLATE_NOOP("lobstex-core", "No compatible Masternode found."),
@@ -374,6 +415,7 @@ QT_TRANSLATE_NOOP("lobstex-core", "Not compatible with existing transactions."),
 QT_TRANSLATE_NOOP("lobstex-core", "Not enough file descriptors available."),
 QT_TRANSLATE_NOOP("lobstex-core", "Not in the Masternode list."),
 QT_TRANSLATE_NOOP("lobstex-core", "Number of automatic wallet backups (default: 10)"),
+QT_TRANSLATE_NOOP("lobstex-core", "Number of custom location backups to retain (default: %d)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Obfuscation is idle."),
 QT_TRANSLATE_NOOP("lobstex-core", "Obfuscation request complete:"),
 QT_TRANSLATE_NOOP("lobstex-core", "Obfuscation request incomplete:"),
@@ -381,20 +423,22 @@ QT_TRANSLATE_NOOP("lobstex-core", "Only accept block chain matching built-in che
 QT_TRANSLATE_NOOP("lobstex-core", "Only connect to nodes in network <net> (ipv4, ipv6 or onion)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Options:"),
 QT_TRANSLATE_NOOP("lobstex-core", "Password for JSON-RPC connections"),
-QT_TRANSLATE_NOOP("lobstex-core", "Percentage of automatically minted Zerocoin  (10-100, default: %u)"),
+QT_TRANSLATE_NOOP("lobstex-core", "Percentage of automatically minted Zerocoin  (1-100, default: %u)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Preparing for resync..."),
 QT_TRANSLATE_NOOP("lobstex-core", "Prepend debug output with timestamp (default: %u)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Print version and exit"),
-QT_TRANSLATE_NOOP("lobstex-core", "RPC SSL options: (see the Bitcoin Wiki for SSL setup instructions)"),
 QT_TRANSLATE_NOOP("lobstex-core", "RPC server options:"),
-QT_TRANSLATE_NOOP("lobstex-core", "RPC support for HTTP persistent connections (default: %d)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Randomly drop 1 of every <n> network messages"),
 QT_TRANSLATE_NOOP("lobstex-core", "Randomly fuzz 1 of every <n> network messages"),
 QT_TRANSLATE_NOOP("lobstex-core", "Rebuild block chain index from current blk000??.dat files"),
-QT_TRANSLATE_NOOP("lobstex-core", "Recalculating coin supply may take 30-60 minutes..."),
-QT_TRANSLATE_NOOP("lobstex-core", "Recalculating supply statistics may take 30-60 minutes..."),
+QT_TRANSLATE_NOOP("lobstex-core", "Recalculating LOBS supply..."),
+QT_TRANSLATE_NOOP("lobstex-core", "Recalculating minted ZLOBS..."),
+QT_TRANSLATE_NOOP("lobstex-core", "Recalculating spent ZLOBS..."),
 QT_TRANSLATE_NOOP("lobstex-core", "Receive and display P2P network alerts (default: %u)"),
+QT_TRANSLATE_NOOP("lobstex-core", "Reindex the LOBS and zLOBS money supply statistics"),
 QT_TRANSLATE_NOOP("lobstex-core", "Reindex the accumulator database"),
+QT_TRANSLATE_NOOP("lobstex-core", "Reindexing zerocoin database..."),
+QT_TRANSLATE_NOOP("lobstex-core", "Reindexing zerocoin failed"),
 QT_TRANSLATE_NOOP("lobstex-core", "Relay and mine data carrier transactions (default: %u)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Relay non-P2SH multisig (default: %u)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Rescan the block chain for missing wallet transactions"),
@@ -403,9 +447,8 @@ QT_TRANSLATE_NOOP("lobstex-core", "ResetMintZerocoin finished: "),
 QT_TRANSLATE_NOOP("lobstex-core", "ResetSpentZerocoin finished: "),
 QT_TRANSLATE_NOOP("lobstex-core", "Run a thread to flush wallet periodically (default: %u)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Run in the background as a daemon and accept commands"),
+QT_TRANSLATE_NOOP("lobstex-core", "Selected coins value is less than payment target"),
 QT_TRANSLATE_NOOP("lobstex-core", "Send transactions as zero-fee transactions if possible (default: %u)"),
-QT_TRANSLATE_NOOP("lobstex-core", "Server certificate file (default: %s)"),
-QT_TRANSLATE_NOOP("lobstex-core", "Server private key (default: %s)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Session not complete!"),
 QT_TRANSLATE_NOOP("lobstex-core", "Session timed out."),
 QT_TRANSLATE_NOOP("lobstex-core", "Set database cache size in megabytes (%d to %d, default: %d)"),
@@ -429,12 +472,14 @@ QT_TRANSLATE_NOOP("lobstex-core", "Specify masternode configuration file (defaul
 QT_TRANSLATE_NOOP("lobstex-core", "Specify pid file (default: %s)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Specify wallet file (within data directory)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Specify your own public address"),
+QT_TRANSLATE_NOOP("lobstex-core", "Spend Valid"),
 QT_TRANSLATE_NOOP("lobstex-core", "Spend unconfirmed change when sending transactions (default: %u)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Staking options:"),
 QT_TRANSLATE_NOOP("lobstex-core", "Stop running after importing blocks from disk (default: %u)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Submitted following entries to masternode: %u / %d"),
 QT_TRANSLATE_NOOP("lobstex-core", "Submitted to masternode, waiting for more entries ( %u / %d ) %s"),
 QT_TRANSLATE_NOOP("lobstex-core", "Submitted to masternode, waiting in queue %s"),
+QT_TRANSLATE_NOOP("lobstex-core", "Support the zerocoin light node protocol (default: %u)"),
 QT_TRANSLATE_NOOP("lobstex-core", "SwiftX options:"),
 QT_TRANSLATE_NOOP("lobstex-core", "Synchronization failed"),
 QT_TRANSLATE_NOOP("lobstex-core", "Synchronization finished"),
@@ -443,13 +488,19 @@ QT_TRANSLATE_NOOP("lobstex-core", "Synchronizing budgets..."),
 QT_TRANSLATE_NOOP("lobstex-core", "Synchronizing masternode winners..."),
 QT_TRANSLATE_NOOP("lobstex-core", "Synchronizing masternodes..."),
 QT_TRANSLATE_NOOP("lobstex-core", "Synchronizing sporks..."),
+QT_TRANSLATE_NOOP("lobstex-core", "Syncing zLOBS wallet..."),
+QT_TRANSLATE_NOOP("lobstex-core", "The coin spend has been used"),
+QT_TRANSLATE_NOOP("lobstex-core", "The transaction did not verify"),
 QT_TRANSLATE_NOOP("lobstex-core", "This help message"),
 QT_TRANSLATE_NOOP("lobstex-core", "This is experimental software."),
 QT_TRANSLATE_NOOP("lobstex-core", "This is intended for regression testing tools and app development."),
 QT_TRANSLATE_NOOP("lobstex-core", "This is not a Masternode."),
 QT_TRANSLATE_NOOP("lobstex-core", "Threshold for disconnecting misbehaving peers (default: %u)"),
+QT_TRANSLATE_NOOP("lobstex-core", "Too many spends needed"),
 QT_TRANSLATE_NOOP("lobstex-core", "Tor control port password (default: empty)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Tor control port to use if onion listening enabled (default: %s)"),
+QT_TRANSLATE_NOOP("lobstex-core", "Transaction Created"),
+QT_TRANSLATE_NOOP("lobstex-core", "Transaction Mint Started"),
 QT_TRANSLATE_NOOP("lobstex-core", "Transaction amount too small"),
 QT_TRANSLATE_NOOP("lobstex-core", "Transaction amounts must be positive"),
 QT_TRANSLATE_NOOP("lobstex-core", "Transaction created successfully."),
@@ -458,17 +509,22 @@ QT_TRANSLATE_NOOP("lobstex-core", "Transaction not valid."),
 QT_TRANSLATE_NOOP("lobstex-core", "Transaction too large for fee policy"),
 QT_TRANSLATE_NOOP("lobstex-core", "Transaction too large"),
 QT_TRANSLATE_NOOP("lobstex-core", "Transmitting final transaction."),
+QT_TRANSLATE_NOOP("lobstex-core", "Trying to spend an already spent serial #, try again."),
 QT_TRANSLATE_NOOP("lobstex-core", "Unable to bind to %s on this computer (bind returned error %s)"),
+QT_TRANSLATE_NOOP("lobstex-core", "Unable to find transaction containing mint"),
 QT_TRANSLATE_NOOP("lobstex-core", "Unable to sign spork message, wrong key?"),
+QT_TRANSLATE_NOOP("lobstex-core", "Unable to start HTTP server. See debug log for details."),
 QT_TRANSLATE_NOOP("lobstex-core", "Unknown network specified in -onlynet: '%s'"),
 QT_TRANSLATE_NOOP("lobstex-core", "Unknown state: id = %u"),
 QT_TRANSLATE_NOOP("lobstex-core", "Upgrade wallet to latest format"),
-QT_TRANSLATE_NOOP("lobstex-core", "Use OpenSSL (https) for JSON-RPC connections"),
 QT_TRANSLATE_NOOP("lobstex-core", "Use UPnP to map the listening port (default: %u)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Use UPnP to map the listening port (default: 1 when listening)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Use a custom max chain reorganization depth (default: %u)"),
+QT_TRANSLATE_NOOP("lobstex-core", "Use block spam filter (default: %u)"),
 QT_TRANSLATE_NOOP("lobstex-core", "Use the test network"),
+QT_TRANSLATE_NOOP("lobstex-core", "User Agent comment (%s) contains unsafe characters."),
 QT_TRANSLATE_NOOP("lobstex-core", "Username for JSON-RPC connections"),
+QT_TRANSLATE_NOOP("lobstex-core", "Value is below the smallest available denomination (= 1) of zLOBS"),
 QT_TRANSLATE_NOOP("lobstex-core", "Value more than Obfuscation pool maximum allows."),
 QT_TRANSLATE_NOOP("lobstex-core", "Verifying blocks..."),
 QT_TRANSLATE_NOOP("lobstex-core", "Verifying wallet..."),
@@ -482,13 +538,15 @@ QT_TRANSLATE_NOOP("lobstex-core", "Warning: This version is obsolete, upgrade re
 QT_TRANSLATE_NOOP("lobstex-core", "Warning: Unsupported argument -benchmark ignored, use -debug=bench."),
 QT_TRANSLATE_NOOP("lobstex-core", "Warning: Unsupported argument -debugnet ignored, use -debug=net."),
 QT_TRANSLATE_NOOP("lobstex-core", "Will retry..."),
+QT_TRANSLATE_NOOP("lobstex-core", "You don't have enough Zerocoins in your wallet"),
 QT_TRANSLATE_NOOP("lobstex-core", "You need to rebuild the database using -reindex to change -txindex"),
 QT_TRANSLATE_NOOP("lobstex-core", "Your entries added successfully."),
 QT_TRANSLATE_NOOP("lobstex-core", "Your transaction was accepted into the pool!"),
 QT_TRANSLATE_NOOP("lobstex-core", "Zapping all transactions from wallet..."),
 QT_TRANSLATE_NOOP("lobstex-core", "ZeroMQ notification options:"),
 QT_TRANSLATE_NOOP("lobstex-core", "Zerocoin options:"),
-QT_TRANSLATE_NOOP("lobstex-core", "failed to validate zerocoin"),
+QT_TRANSLATE_NOOP("lobstex-core", "could not get lock on cs_spendcache"),
+QT_TRANSLATE_NOOP("lobstex-core", "isValid(): Invalid -proxy address or hostname: '%s'"),
 QT_TRANSLATE_NOOP("lobstex-core", "on startup"),
 QT_TRANSLATE_NOOP("lobstex-core", "wallet.dat corrupt, salvage failed"),
 };

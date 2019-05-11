@@ -1,7 +1,6 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The PIVX developers	
-// Copyright (c) 2018 The Lobstex developers
+// Copyright (c) 2015-2018 The Lobstex developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -9,7 +8,7 @@
 #define BITCOIN_QT_GUICONSTANTS_H
 
 /* Milliseconds between model updates */
-static const int MODEL_UPDATE_DELAY = 250;
+static const int MODEL_UPDATE_DELAY = 1000;
 
 /* AskPassphraseDialog -- Maximum passphrase length */
 static const int MAX_PASSPHRASE_SIZE = 1024;
@@ -20,23 +19,26 @@ static const int STATUSBAR_ICONSIZE = 16;
 static const bool DEFAULT_SPLASHSCREEN = true;
 
 /* Invalid field background style */
-#define STYLE_INVALID "background:#aa1212"
+#define STYLE_INVALID "background:#FF8080"
 
 /* Transaction list -- unconfirmed transaction */
-#define COLOR_UNCONFIRMED QColor(198, 83, 15)
+#define COLOR_UNCONFIRMED QColor(38, 79, 105)
 /* Transaction list -- negative amount */
-#define COLOR_NEGATIVE QColor(183, 111, 11)
+#define COLOR_NEGATIVE QColor(0, 0, 0)
 /* Transaction list -- bare address (without label) */
-#define COLOR_BAREADDRESS QColor(33, 32, 32)
+#define COLOR_BAREADDRESS QColor(71, 71, 71)
 /* Transaction list -- TX status decoration - open until date */
-#define COLOR_TX_STATUS_OPENUNTILDATE QColor(30, 30, 122)
+#define COLOR_TX_STATUS_OPENUNTILDATE QColor(38, 79, 105)
 /* Transaction list -- TX status decoration - offline */
-#define COLOR_TX_STATUS_OFFLINE QColor(96, 54, 54)
+#define COLOR_TX_STATUS_OFFLINE QColor(38, 79, 105)
 /* Transaction list -- TX status decoration - default color */
-#define COLOR_BLACK QColor(33, 32, 32)
+#define COLOR_BLACK QColor(51, 51, 51)
 /* Transaction list -- TX status decoration - conflicted */
-#define COLOR_CONFLICTED QColor(153, 12, 12)
-
+#define COLOR_CONFLICTED QColor(255, 0, 0)
+/* Transaction list -- TX status decoration - orphan (Light Gray #D3D3D3) */
+#define COLOR_ORPHAN QColor(212, 28, 28)
+/* Transaction list -- TX status decoration - stake (BlueViolet #8A2BE2) */
+#define COLOR_STAKE QColor(206, 70, 28)
 /* Tooltips longer than this (in characters) are converted into rich text,
    so that they can be word-wrapped.
  */

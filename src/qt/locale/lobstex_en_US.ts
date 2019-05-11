@@ -4166,8 +4166,8 @@ for example: alertnotify=echo %%s | mail -s "Lobstex Alert" admin@foo.com
         <translation>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</translation>
     </message>
     <message>
-        <source>(46200 could be used only on mainnet)</source>
-        <translation>(46200 could be used only on mainnet)</translation>
+        <source>(51472 could be used only on mainnet)</source>
+        <translation>(51472 could be used only on mainnet)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4178,8 +4178,8 @@ for example: alertnotify=echo %%s | mail -s "Lobstex Alert" admin@foo.com
         <translation>(default: 1)</translation>
     </message>
     <message>
-        <source>(must be 46200 for mainnet)</source>
-        <translation>(must be 46200 for mainnet)</translation>
+        <source>(must be 51472 for mainnet)</source>
+        <translation>(must be 51472 for mainnet)</translation>
     </message>
     <message>
         <source>Accept command line and JSON-RPC commands</source>
@@ -4282,12 +4282,8 @@ for example: alertnotify=echo %%s | mail -s "Lobstex Alert" admin@foo.com
         <translation>Copyright (C) 2014-%i The Dash Core Developers</translation>
     </message>
     <message>
-        <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
-        <translation>Copyright (C) 2015-%i The PIVX Core Developers</translation>
-    </message>
-    <message>
-        <source>Copyright (C) 2018-%i The Lobstex Core Developers</source>
-        <translation>Copyright (C) 2018-%i The Lobstex Core Developers</translation>
+        <source>Copyright (C) 2015-%i The Lobstex Core Developers</source>
+        <translation>Copyright (C) 2015-%i The Lobstex Core Developers</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>

@@ -115,7 +115,7 @@ The gbuild invocations below <b>DO NOT DO THIS</b> by default.
     mv build/out/lobstex-*.tar.gz build/out/lobstex-*.dmg ../
 
     ./bin/gbuild --memory 3000 --commit lobstex=v${VERSION} ../lobstex/contrib/gitian-descriptors/gitian-aarch64.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../lobstex/contrib/gitian-descriptors/gitian-aarch64.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-aarch64 --destination ../gitian.sigs/ ../lobstex/contrib/gitian-descriptors/gitian-aarch64.yml
     mv build/out/lobstex-*.tar.gz build/out/src/lobstex-*.tar.gz ../
     popd
 

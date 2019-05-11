@@ -38,7 +38,7 @@ script:
   - export LD_LIBRARY_PATH=$TRAVIS_BUILD_DIR/depends/$HOST/lib
   - if [ "$RUN_TESTS" = "true" ]; then make $MAKEJOBS distcheck; fi
 
-mlobsix:
+matrix:
   fast_finish: true
   include:
     - os: linux

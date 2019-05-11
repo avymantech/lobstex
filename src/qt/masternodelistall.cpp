@@ -9,7 +9,7 @@
 #include "masternodeconfig.h"
 #include "masternodeman.h"
 #include "sync.h"
-#include "wallet.h"
+#include "wallet/wallet.h"
 #include "walletmodel.h"
 
 #include <QMessageBox>
@@ -24,18 +24,21 @@ MasternodeListAll::MasternodeListAll(QWidget* parent) : QWidget(parent),
 {
     ui->setupUi(this);
 
-    int columnAddressWidth = 140;
+    int columnAddressWidth = 170;
     int columnProtocolWidth = 70;
     int columnStatusWidth = 70;
     int columnActiveWidth = 100;
-    int columnLastSeenWidth = 120;
+    int columnLastSeenWidth = 140;
 
     ui->tableWidgetMasternodes->setColumnWidth(0, columnAddressWidth);
     ui->tableWidgetMasternodes->setColumnWidth(1, columnProtocolWidth);
     ui->tableWidgetMasternodes->setColumnWidth(2, columnStatusWidth);
     ui->tableWidgetMasternodes->setColumnWidth(3, columnActiveWidth);
     ui->tableWidgetMasternodes->setColumnWidth(4, columnLastSeenWidth);
-    
+    ui->tableWidgetMasternodes->setShowGrid(false);
+
+
+
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateNodeList()));
     timer->start(1000);
@@ -129,4 +132,3 @@ void MasternodeListAll::on_filterLineEdit_textChanged(const QString& strFilterIn
     fFilterUpdated = true;
     ui->countLabel->setText(QString::fromStdString(strprintf("Please wait... %d", MASTERNODELIST_FILTER_COOLDOWN_SECONDS)));
 }
-
