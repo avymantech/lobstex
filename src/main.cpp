@@ -1914,7 +1914,7 @@ int64_t GetBlockValue(int nHeight)
         nSubsidy = 30 * COIN;
     } else if (nHeight > 300000) {
         nSubsidy = 15 * COIN;
-    } else if (nHeight > 530000){
+    } else if (nHeight > 560000){
 		nSubsidy = 6 * COIN;
 	} else if (nHeight > 1055300){
 		nSubsidy = 5 * COIN;
@@ -2187,7 +2187,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
     return ret;
 }
 
-int nStartTreasuryBlock = 535000;
+int nStartTreasuryBlock = 560000;
 int nTreasuryBlockStep = 1440;
 
 bool IsTreasuryBlock(int nHeight)
