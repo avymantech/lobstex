@@ -85,8 +85,8 @@
         <file alias="splash_testnet">res/images/splash_testnet.png</file>
         <file alias="splash_regtest">res/images/splash_regtest.png</file>
         <file alias="header">res/images/header.png</file>
-        <file alias="bg">res/images/bg.jpg</file>
-        <file alias="frame_bg">res/images/frame_bg.jpg</file>
+        <file alias="bg">res/images/bg.png</file>
+        <file alias="frame_bg">res/images/frame_bg.png</file>
     </qresource>
     <qresource prefix="/movies">
         <file alias="spinner-000">res/movies/spinner-000.png</file>

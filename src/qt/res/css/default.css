@@ -19,15 +19,16 @@
 /****************************************************************************************/
 
 WalletFrame {
-  border-top:0px solid #000;
-  background-repeat: repeat;
-  background-image: url(':/images/bg');
-  background-color: transparent;
-  background-size: cover;
-  background-position: left top;
-  height: 100%;
-  visibility: inherit;
-  }
+border-top:0px solid #000;
+background-repeat: repeat;
+background-image: url(':/images/bg');
+background-color: transparent;
+background-size: cover;
+background-position: left top;
+height: 100%;
+width: 100%;
+visibility: inherit;
+}
 
 QStatusBar {
 background-color: #fff;
@@ -49,7 +50,7 @@ font-size:12px;
 }
 
 .QFrame {
-background-color:transparent;
+background-color: transparent;
 border:0px solid #fff;
 }
 
@@ -91,10 +92,10 @@ width: 154px;
 QToolBar > QToolButton {
 Alignment: left;
 background-color: rgba(255,255,255,0.05);
-selection-background-color:transparent;
+selection-background-color: transparent;
 border:0.5px solid;
 border-color:rgba(255,255,255,0.1);
-font-size: 14px;
+font-size: 13px;
 color:#aaa;
 width: 160px;
 height: 40px;
@@ -107,15 +108,12 @@ background-color: transparent;
 color:#fff;
 }
 
-
-
 QToolBar > QToolButton:hover {
 Alignment: left;
 background-color: rgba(255,255,255,0.05);
 selection-background-color:transparent;
 border:0.5px solid;
 border-color:#43BDC4;
-font-size: 14px;
 color:#fff;
 width: 160px;
 height: 50px;
@@ -275,10 +273,10 @@ margin: 2px;
 }
 
 QToolButton:hover {
-  background-color:rgba(35,36,52,0.6);
-  border-color:#43BDC4;
-  color:#fff;
-  }
+background-color:rgba(35,36,52,0.6);
+border-color:#43BDC4;
+color:#fff;
+}
 
 QToolButton:focus {
 /* border:none; */
@@ -306,10 +304,10 @@ margin: 2px;
 }
 
 QPushButton:hover {
-  background-color:rgba(35,36,52,0.6);
-  border-color:#43BDC4;
-  color:#fff;
-  }
+background-color:rgba(35,36,52,0.6);
+border-color:#43BDC4;
+color:#fff;
+}
 
 QPushButton:focus {
 /* border:none; */
@@ -1028,7 +1026,11 @@ min-width:400px;
 min-height:175px;
 border-radius: 6px;
 background-color: transparent;
-background-image:url(:/images/frame_bg);
+background-image: url(':/images/frame_bg');
+background-position: center;
+background-size: cover;
+width: 100%;
+height: 100%;
 background-repeat: repeat-y;
 }
 
@@ -1050,7 +1052,11 @@ min-width:400px;
 background-color:rgb(255,255,255);
 border-radius: 6px;
 background-color: transparent;
-background-image:url(:/images/frame_bg);
+background-image: url(':/images/frame_bg');
+background-position: center;
+background-size: cover;
+width: 100%;
+height: 100%;
 background-repeat: repeat-y;
 }
 
@@ -1406,21 +1412,33 @@ QDialog#SendCoinsDialog .QFrame#frameCoinControl { /* Coin Control Section */
 background-color:rgb(255,255,255);
 border-radius: 6px;
 background-color: transparent;
-background-image:url(:/images/frame_bg);
+background-image: url(':/images/frame_bg');
+background-position: center;
+background-size: cover;
+width: 100%;
+height: 100%;
 background-repeat: repeat-y;
 }
 
 QDialog#SendCoinsDialog .QFrame#frameFee { /* Coin Control Section */
 border-radius: 6px;
 background-color: transparent;
-background-image:url(:/images/frame_bg);
+background-image: url(':/images/frame_bg');
+background-position: center;
+background-size: cover;
+width: 100%;
+height: 100%;
 background-repeat: repeat-y;
 }
 
 QDialog#SendCoinsDialog .QFrame#frame_Send { /* Coin Control Section */
 border-radius: 6px;
 background-color: transparent;
-background-image:url(:/images/frame_bg);
+background-image: url(':/images/frame_bg');
+background-position: center;
+background-size: cover;
+width: 100%;
+height: 100%;
 background-repeat: repeat-y;
 margin-bottom:6px;
 }
@@ -1512,7 +1530,11 @@ min-height:27px;
 QStackedWidget#SendCoinsEntry .QFrame#SendCoins{ /* Send Coin */
 border-radius: 6px;
 background-color: transparent;
-background-image:url(:/images/frame_bg);
+background-image: url(':/images/frame_bg');
+background-position: center;
+background-size: cover;
+width: 100%;
+height: 100%;
 background-repeat: repeat-y;
 }
 
@@ -1690,14 +1712,22 @@ background-color:transparent;
 QWidget#ReceiveCoinsDialog .QFrame#frame {
 border-radius: 6px;
 background-color: transparent;
-background-image:url(:/images/frame_bg);
+background-image: url(':/images/frame_bg');
+background-position: center;
+background-size: cover;
+width: 100%;
+height: 100%;
 background-repeat: repeat-y;
 }
 
 QWidget#ReceiveCoinsDialog .QFrame#frame2 {
 border-radius: 6px;
 background-color: transparent;
-background-image:url(:/images/frame_bg);
+background-image: url(':/images/frame_bg');
+background-position: center;
+background-size: cover;
+width: 100%;
+height: 100%;
 background-repeat: repeat-y;
 }
 
@@ -1770,7 +1800,11 @@ color:#333333;
 QWidget#txframe {
 border-radius: 6px;
 background-color: transparent;
-background-image:url(:/images/frame_bg);
+background-image: url(':/images/frame_bg');
+background-position: center;
+background-size: cover;
+width: 100%;
+height: 100%;
 background-repeat: repeat-y;
 }
 
@@ -1813,7 +1847,11 @@ min-width: 24px;
 QWidget#MasternodeList .QFrame#frameList {
 border-radius: 6px;
 background-color: transparent;
-background-image:url(:/images/frame_bg);
+background-image: url(':/images/frame_bg');
+background-position: center;
+background-size: cover;
+width: 100%;
+height: 100%;
 background-repeat: repeat-y;
 }
 
@@ -1828,7 +1866,11 @@ border:0px;
 QWidget#MasternodeListAll .QFrame#frameListAll {
 border-radius: 6px;
 background-color: transparent;
-background-image:url(:/images/frame_bg);
+background-image: url(':/images/frame_bg');
+background-position: center;
+background-size: cover;
+width: 100%;
+height: 100%;
 background-repeat: repeat-y;
 }
 
@@ -1859,7 +1901,11 @@ color:#818181;
 QWidget#GovernancePage .QFrame#frame_BG {
 border-radius: 6px;
 background-color: transparent;
-background-image:url(:/images/frame_bg);
+background-image: url(':/images/frame_bg');
+background-position: center;
+background-size: cover;
+width: 100%;
+height: 100%;
 background-repeat: repeat-y;
 margin:2px;
 }
