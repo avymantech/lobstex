@@ -136,6 +136,8 @@ public:
 
     int Zerocoin_Block_Double_Accumulated() const { return nBlockDoubleAccumulated; }
     CAmount InvalidAmountFiltered() const { return nInvalidAmountFiltered; };
+	
+	std::string DevAddress() const { return devAddress; }
 
 protected:
     CChainParams() {}
@@ -201,6 +203,8 @@ protected:
     int nBlockEnforceInvalidUTXO;
     int nBlockZerocoinV2;
     int nBlockDoubleAccumulated;
+	
+	std::string devAddress;
 
     // fake serial attack
     int nFakeSerialBlockheightEnd = 0;

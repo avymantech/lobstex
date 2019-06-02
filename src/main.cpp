@@ -1899,11 +1899,7 @@ int64_t GetBlockValue(int nHeight)
 
 	
 	
-	if(IsTreasuryBlock(nHeight)) {
-        LogPrintf("GetBlockValue(): this is a treasury block\n");
-		nSubsidy = GetTreasuryAward(nHeight);
-    // Don't sync this code, it's specified by LOBS
-    } else { 
+
 		if (nHeight == 0) {
         nSubsidy = 2500000 * COIN;
     } else if (nHeight >= 1 && nHeight <= 500) {
@@ -1919,12 +1915,11 @@ int64_t GetBlockValue(int nHeight)
 	} else if (nHeight > 1055300 && nHeight <= 1581600){
 		nSubsidy = 5 * COIN;
 	} else if (nHeight > 1581600){
-		nSubsidy = 2.5 * COIN;
+		nSubsidy = 3 * COIN;
 	} else {
 		nSubsidy = 0 * COIN;
 	}
-	}
-
+	
     return nSubsidy;
 }
 
@@ -2172,12 +2167,12 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
         ret = 0;
     } else if (nHeight >= 5000 && nHeight <= 43200) {
         ret = blockValue * .50;
-    } else if (nHeight > 43200) {
+    } else if (nHeight > 43200 && < 573080) {
         ret = blockValue * .60;
     } else if (nHeight > 530000) {
-        ret = 5 * COIN;
-	} else if (nHeight > 1055300) {
         ret = 4 * COIN;
+	} else if (nHeight > 1055300) {
+        ret = 3 * COIN;
 	} else if (nHeight > 1581600) {
         ret = 2 * COIN;
     }else {
@@ -2187,7 +2182,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
     return ret;
 }
 
-int nStartTreasuryBlock = 560000;
+int nStartTreasuryBlock = 99999999;
 int nTreasuryBlockStep = 1440;
 
 bool IsTreasuryBlock(int nHeight)
@@ -3271,6 +3266,27 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
         return state.DoS(100, error("ConnectBlock() : reward pays too much (actual=%s vs limit=%s)",
                                     FormatMoney(pindex->nMint), FormatMoney(nExpectedMint)),
                          REJECT_INVALID, "bad-cb-amount");
+    }
+	if (pindex->pprev->nHeight > 573180) {
+      CAmount devReward = 1 * COIN;
+		if (pindex->pprev->nHeight > 1581600) {
+			devReward = 0.5 * COIN;
+		}
+      if (devReward > 0) {
+        CTxDestination destination = CBitcoinAddress(Params().DevAddress()).Get();
+        CScript DEV_SCRIPT = GetScriptForDestination(destination);
+        bool DevPaid = false;
+
+        for (const auto& output : block.vtx[(block.IsProofOfWork()?0:1)].vout) {
+            if (output.scriptPubKey == DEV_SCRIPT && output.nValue == devReward) {
+                DevPaid = true;
+                break;
+            }
+        }
+        if (!DevPaid) {
+            return state.DoS(0, error("ConnectBlock(LOBS): no dev reward"), REJECT_INVALID, "no-dev-reward");
+        }
+      }
     }
 
     // Ensure that accumulator checkpoints are valid and in the same state as this instance of the chain
@@ -6920,13 +6936,13 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 //       it was the one which was commented out
 int ActiveProtocol()
 {
+    // SPORK_15 was used for 70912 (v3.0.5+), commented out now.
+    if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
+            return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT_2;
     // SPORK_14 is used for 70913 (v3.1.0+)
+	
     if (IsSporkActive(SPORK_14_NEW_PROTOCOL_ENFORCEMENT))
             return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-
-    // SPORK_15 was used for 70912 (v3.0.5+), commented out now.
-    //if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
-    //        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
 
     return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 }
