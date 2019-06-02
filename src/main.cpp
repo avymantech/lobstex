@@ -2167,11 +2167,11 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
         ret = 0;
     } else if (nHeight >= 5000 && nHeight <= 43200) {
         ret = blockValue * .50;
-    } else if (nHeight > 43200 && nHeight < 573080) {
+    } else if (nHeight > 43200 && nHeight =< 573080) {
         ret = blockValue * .60;
-    } else if (nHeight > 530000) {
+    } else if (nHeight > 530000 && nHeight =<1055300) {
         ret = 4 * COIN;
-	} else if (nHeight > 1055300) {
+	} else if (nHeight > 1055300 && nHeight =< 1581600) {
         ret = 3 * COIN;
 	} else if (nHeight > 1581600) {
         ret = 2 * COIN;
