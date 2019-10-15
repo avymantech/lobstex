@@ -57,6 +57,8 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
     (0, uint256("0x00000ae505c7dde58f3087c6e641acc3d9d3490c881ec82db34b74511c04fe1e"))
 	(1, uint256("0x00000ca72dfaf00adf128218111085bf2dba046a081ec4ad8487778e1a663c3e"))
 	(2, uint256("0x0000055d7f47ceaf2c1b429a6ba4bec79c09d19dfaa264d8d789f8ee1a7c05cd"));
+	(720000, uint256("0x172e65eb158a034a6c3fb5eb96c79ef8931436780a60910271dbe9fc7d17e3d7"));
+	(720001, uint256("0x3bea229bb2360ad7e2caff0af1d2e8728ee581219ae05447be432f6098212716"));
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
