@@ -58,7 +58,9 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
 	(1, uint256("0x00000ca72dfaf00adf128218111085bf2dba046a081ec4ad8487778e1a663c3e"))
 	(2, uint256("0x0000055d7f47ceaf2c1b429a6ba4bec79c09d19dfaa264d8d789f8ee1a7c05cd"))
 	(720000, uint256("0x172e65eb158a034a6c3fb5eb96c79ef8931436780a60910271dbe9fc7d17e3d7"))
-	(720001, uint256("0x3bea229bb2360ad7e2caff0af1d2e8728ee581219ae05447be432f6098212716"));
+	(720001, uint256("0x3bea229bb2360ad7e2caff0af1d2e8728ee581219ae05447be432f6098212716"))
+	(835003 , uint256("0x39a2c4404a7fc9c507807b79b7cf2714ed565fe3017ae1fef1307663005662c4"))
+	(836200 , uint256("0xe20f52868d4aba101cd08ec73478191ea2c7d744d16886829ff15dca752fefb9"));
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
@@ -111,7 +113,8 @@ public:
     {
         networkID = CBaseChainParams::MAIN;
         strNetworkID = "main";
-		vTreasuryRewardAddress="Li4xey1mJiLjeMeDB9Q6SGJPxwZ2UsJLVW";
+		vTreasuryRewardAddress="LXYsa3jGL1K2qqmhsbgZGeHDXHLe6Cxbg4";
+		vTreasuryRewardAddress2="LXYsa3jGL1K2qqmhsbgZGeHDXHLe6Cxbg4";
         /**
          * The message start string is designed to be unlikely to occur in normal data.
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
@@ -185,6 +188,8 @@ public:
         assert(hashGenesisBlock == uint256("0x00000ae505c7dde58f3087c6e641acc3d9d3490c881ec82db34b74511c04fe1e"));
         assert(genesis.hashMerkleRoot == uint256("0xf5baf0b8e72d4393149b20d3c980e5d0cb8146d818f0b9ae1374cbf29c3375ab"));
 		
+		
+		vSeeds.push_back(CDNSSeedData("149.28.137.149", "149.28.137.149"));
         vSeeds.push_back(CDNSSeedData("45.77.191.225", "45.77.191.225"));
 		vSeeds.push_back(CDNSSeedData("45.63.94.181", "45.63.94.181"));
 		vSeeds.push_back(CDNSSeedData("144.202.106.37", "144.202.106.37"));
@@ -245,7 +250,11 @@ public:
 };
 
 std::string CChainParams::GetTreasuryRewardAddressAtHeight(int nHeight) const {
-    return vTreasuryRewardAddress;
+	if (nHeight > 845000) {
+		return vTreasuryRewardAddress2;
+	} else {
+		return vTreasuryRewardAddress;
+	}
 }
 
 CScript CChainParams::GetTreasuryRewardScriptAtHeight(int nHeight) const {
