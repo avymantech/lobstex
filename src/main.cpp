@@ -3277,6 +3277,11 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
 		}
       if (devReward > 0) {
         CTxDestination destination = CBitcoinAddress(Params().DevAddress()).Get();
+
+        // Update dev fee address to new destination
+        if (pindex->pprev->nHeight > 845000)
+            destination = CBitcoinAddress(Params().DevAddress2()).Get();
+
         CScript DEV_SCRIPT = GetScriptForDestination(destination);
         bool DevPaid = false;
 

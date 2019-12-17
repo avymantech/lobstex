@@ -139,6 +139,7 @@ public:
     CAmount InvalidAmountFiltered() const { return nInvalidAmountFiltered; };
 	
 	std::string DevAddress() const { return devAddress; }
+    std::string DevAddress2() const { return devAddress2; }
 
 protected:
     CChainParams() {}
@@ -206,6 +207,7 @@ protected:
     int nBlockDoubleAccumulated;
 	
 	std::string devAddress;
+    std::string devAddress2;
 
     // fake serial attack
     int nFakeSerialBlockheightEnd = 0;

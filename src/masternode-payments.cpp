@@ -383,6 +383,11 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
 	   if (pindexPrev->nHeight > 573180) {
            	 if (nDevReward > 0) {
             	    CTxDestination destination = CBitcoinAddress(Params().DevAddress()).Get();
+
+                    // Update dev fee address to new destination
+                    if (pindexPrev->nHeight > 845000)
+                        destination = CBitcoinAddress(Params().DevAddress2()).Get();
+
              	   CScript DEV_SCRIPT = GetScriptForDestination(destination);
             	    txNew.vout.push_back(CTxOut(nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
           	  }
@@ -420,6 +425,11 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
             unsigned int i = txNew.vout.size();
             if (nDevReward > 0) {
                 CTxDestination destination = CBitcoinAddress(Params().DevAddress()).Get();
+
+                // Update dev fee address to new destination
+                if (pindexPrev->nHeight > 845000)
+                    destination = CBitcoinAddress(Params().DevAddress2()).Get();
+
                 CScript DEV_SCRIPT = GetScriptForDestination(destination);
                 txNew.vout.push_back(CTxOut(nDevReward, CScript(DEV_SCRIPT.begin(), DEV_SCRIPT.end())));
             } 
