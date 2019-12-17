@@ -79,12 +79,13 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
 
                 if (mine) {
                     TransactionRecord sub(hash, nTime);
-                    sub.credit = wtx.vout[i].nValue;
                     sub.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
                     if (i == 1) {
+                        sub.credit = wtx.vout[i].nValue - nDebit;
                         sub.type = TransactionRecord::StakeMint;
                         sub.address = CBitcoinAddress(address).ToString();
                     } else {
+                        sub.credit = wtx.vout[i].nValue;
                         sub.type = TransactionRecord::MNReward;
                         sub.address = CBitcoinAddress(addr).ToString();
                     }
